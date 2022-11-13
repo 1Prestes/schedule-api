@@ -2,7 +2,7 @@ service: ms-${self:custom.serviceName}
 useDotenv: true
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs14.x
   timeout: 30
   memorySize: 512
   versionFunctions: false
