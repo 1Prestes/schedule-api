@@ -1,0 +1,16 @@
+name: "Typecheck + Lint"
+description: ""
+runs:
+  using: "composite"
+  steps:
+    - name: Typecheck
+      run: |
+        echo "\n\n\nTypecheck >>"
+        yarn typecheck
+      shell: bash
+
+    - name: Lint
+      run: |
+        echo "\n\n\nLint >>"
+        yarn lint
+      shell: bash
