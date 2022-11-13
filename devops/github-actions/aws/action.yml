@@ -18,7 +18,7 @@ runs:
       id: aws-credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-          aws-access-key-id: ${{ inputs.aws-access-key-id }} 
-          aws-secret-access-key: ${{ inputs.aws-secret-access-key }}
+          role-to-assume: arn:aws:iam::742437598267:role/OEBC-link-sls-deployment
+          role-session-name: ServerlessDeployment
           aws-region: ${{ inputs.aws-region }}
           
