@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Typecheck + Lint
-        uses: ./devops/github-actions/validate
+      # - name: Typecheck + Lint
+      #   uses: ./devops/github-actions/validate
 
       - name: AWS Configure credentials
         uses: ./devops/github-actions/aws
