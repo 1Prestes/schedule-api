@@ -12,7 +12,7 @@ inputs:
     required: true
     default: 'us-east-1'
 runs:
-  # using: "composite"
+  using: "composite"
   steps:
     - name: Teste secret
       shell: bash
