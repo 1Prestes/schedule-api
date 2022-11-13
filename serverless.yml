@@ -1,0 +1,73 @@
+service: ms-${self:custom.serviceName}
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs16.x
+  timeout: 30
+  memorySize: 512
+  versionFunctions: false
+  stage: ${opt:stage, "${env:stage, 'local'}"}
+  region: ${opt:region, "${env:region, 'us-east-1'}"}
+  lambdaHashingVersion: '20210326'
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource: 'arn:aws:s3:::*/*'
+  environment:
+    STAGE: ${self:provider.stage}
+    DB_HOST: ${env:DB_HOST, ssm:/ifsp/infra/postgres/host}
+    DB_PORT: ${env:DB_PORT, ssm:/ifsp/infra/postgres/port}
+    DB_NAME: ${env:DB_NAME, ssm:/ifsp/infra/postgres/name}
+    DB_USER: ${env:DB_USER, self:custom.postgresSecret.username}
+    DB_PASSWORD: ${env:DB_PASSWORD, self:custom.postgresSecret.password}
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-prune-plugin
+custom:
+  prune:
+    automatic: true
+    includeLayers: true
+    number: 3
+  serviceName: user-schedule
+  contextPath: /v1/${self:custom.serviceName}
+  funcDir: src/framework/functions
+  baseApi: ${self:custom.contextPath}
+  baseApiPrivate: internal/${self:custom.contextPath}
+  serverless-offline:
+    httpPort: 4005
+    lambdaPort: 3005
+    stage: local
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    packager: 'yarn'
+    packagerOptions:
+      noFrozenLockfile: true
+    includeModules:
+      forceInclude:
+        - pg
+        - pg-hstore
+      forceExclude:
+        - aws-sdk
+functions:
+  createUser:
+    handler: ${self:custom.funcDir}/users/createUser.handler
+    events:
+      - http:
+          path: ${self:custom.baseApi}/user
+          method: post
+          cors:
+            origin: '*'
+            headers: '*'
+  findUser:
+    handler: ${self:custom.funcDir}/users/findUser.handler
+    events:
+      - http:
+          path: ${self:custom.baseApi}/user/{id}
+          method: get
+          cors:
+            origin: '*'
+            headers: '*'

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@domain/*": ["src/domain/*"],
+      "@business/*": ["src/business/*"],
+      "@controller/*": ["src/controller/*"],
+      "@framework/*": ["src/framework/*"],
+      "@shared/*": ["src/shared/*"],
+    }
+  }
+}
