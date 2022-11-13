@@ -15,9 +15,14 @@ runs:
   using: "composite"
   steps:
     - name: Console Global Secret
+      shell: bash
       run: echo ${{secrets.SECRET_TEST}}
     - name: Console Secret2
+      shell: bash
       run: echo ${{secrets.SECRET_TEST2}}
+    - name: Console Secret AWS
+      shell: bash
+      run: echo ${{inputs.aws-access-key-id}}
 
     - name: AWS - Configure credentials
       id: aws-credentials
