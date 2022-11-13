@@ -13,7 +13,6 @@ inputs:
     default: 'us-east-1'
 runs:
   using: "composite"
-  needs: build
   steps:
     - name: AWS - Configure credentials
       id: aws-credentials
