@@ -3,9 +3,11 @@ description: ""
 inputs:
   aws-access-key-id:
     description: 'aws-access-key-id'
+    default: ${{ secrets.DEV_AWS_KEY }}
     required: true
   aws-secret-access-key:
     description: 'aws-secret-access-key'
+    default: ${{ secrets.DEV_AWS_SECRET }}
     required: true
   aws-region:
     description: 'aws-region'
