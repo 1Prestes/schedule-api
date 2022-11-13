@@ -12,8 +12,10 @@ inputs:
     required: true
     default: 'us-east-1'
 runs:
+  # using: "composite"
   steps:
     - name: Teste secret
+      shell: bash
       run: echo ${{ inputs.aws-access-key-id }}
 
     - name: AWS - Configure credentials
