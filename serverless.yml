@@ -18,11 +18,11 @@ provider:
           Resource: 'arn:aws:s3:::*/*'
   environment:
     STAGE: ${self:provider.stage}
-    DB_HOST: ${env:DB_HOST, ssm:/ifsp/infra/postgres/host}
-    DB_PORT: ${env:DB_PORT, ssm:/ifsp/infra/postgres/port}
-    DB_NAME: ${env:DB_NAME, ssm:/ifsp/infra/postgres/name}
-    DB_USER: ${env:DB_USER, self:custom.postgresSecret.username}
-    DB_PASSWORD: ${env:DB_PASSWORD, self:custom.postgresSecret.password}
+    DB_HOST: ${env:DB_HOST, ssm:/ifsp/infra/aurora/host}
+    DB_PORT: ${env:DB_PORT, ssm:/ifsp/infra/aurora/port}
+    DB_NAME: ${env:DB_NAME, ssm:/ifsp/infra/aurora/dbname}
+    DB_USER: ${env:DB_USER, ssm:/ifsp/infra/aurora/username}
+    DB_PASSWORD: ${env:DB_PASSWORD, ssm:/ifsp/infra/aurora/password}
 plugins:
   - serverless-webpack
   - serverless-offline
