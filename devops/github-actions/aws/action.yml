@@ -12,22 +12,14 @@ inputs:
     required: true
     default: 'us-east-1'
 runs:
-  using: "composite"
   steps:
-    - name: Console Global Secret
-      shell: bash
-      run: echo ${{secrets.SECRET_TEST}}
-    - name: Console Secret2
-      shell: bash
-      run: echo ${{secrets.SECRET_TEST2}}
-    - name: Console Secret AWS
-      shell: bash
-      run: echo ${{inputs.aws-access-key-id}}
+    - name: Teste secret
+      run: echo ${{ inputs.aws-access-key-id }}
 
     - name: AWS - Configure credentials
       id: aws-credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-          aws-access-key-id: 'testekeyid'
-          aws-secret-access-key: 'testeaccesskey'
+          aws-access-key-id: ${{ inputs.aws-access-key-id }} 
+          aws-secret-access-key: ${{ inputs.aws-secret-access-key }}
           aws-region: ${{ inputs.aws-region }}
