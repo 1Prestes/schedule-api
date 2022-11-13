@@ -38,6 +38,6 @@ jobs:
           db-name: schedule_db
 
       - name: Serverless Deploy
-        uses: ./github-actions/serverless-deploy
+        uses: ./devops/github-actions/serverless-deploy
         with:
           stage: dev
