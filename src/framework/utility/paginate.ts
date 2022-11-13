@@ -1,6 +1,7 @@
 import { Pagination } from '@business/dto/paginationDto'
 
 export function transformPagination(pagination: Pagination<any>) {
+  // eslint-disable-next-line no-prototype-builtins
   if (!pagination || !pagination.hasOwnProperty('totalRecords') || !pagination.hasOwnProperty('totalPages')) {
     return pagination
   }

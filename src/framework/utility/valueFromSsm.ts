@@ -5,7 +5,6 @@ import { unknownError } from '@business/module/errors/general'
 import { Either, left, right } from '@shared/either'
 import { IError } from '@shared/iError'
 
-
 const ssm = new AWS.SSM()
 
 const valueFromSsm = (keysSsm: string[]): Promise<Either<IError, ParameterList>> => {
