@@ -35,10 +35,10 @@ jobs:
 
       - name: Migrate - SSH Tunnel
             shell: bash
-            run: |
+            run:
               echo "$inputs.aws-access-key-id" 
               echo "$secrets.DEV_AWS_KEY" 
-              echo $secrets.DEV_AWS_KEY
+              echo $secrets.DEV_AWS_KEY 
 
 
       - name: Migrate Sequelize
