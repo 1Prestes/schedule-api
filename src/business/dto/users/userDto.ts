@@ -13,7 +13,7 @@ export interface InputCreateUserDto {
 export type OutputCreateUserDto = Either<IError, IUserEntity>
 
 export interface InputFindUserDto {
-  userId: string
+  id: string
 }
 
 export type OutputFindUserDto = Either<IError, IUserEntity>
