@@ -13,11 +13,14 @@ export class UserRepository implements IUserRepository {
     const where = {
       iduser: id,
     }
-    return this.userModel.findOne({ where })
+    return this.userModel.findOne({
+      where,
+      attributes: { exclude: ['password'] },
+    })
   }
 
   async create(userEntity: IUserEntity): Promise<IUserEntity> {
-    return this.userModel.create({
+    const createResponse = await this.userModel.create({
       iduser: userEntity.id,
       name: userEntity.name,
       username: userEntity.username,
@@ -25,6 +28,10 @@ export class UserRepository implements IUserRepository {
       address: userEntity.address,
       birth_date: userEntity.birthDate,
     })
+
+    delete createResponse.dataValues.password
+
+    return createResponse.dataValues
   }
 
   async list(props: InputListUsersDto): Promise<{
@@ -34,6 +41,7 @@ export class UserRepository implements IUserRepository {
     return this.userModel.findAndCountAll({
       ...(props?.limit && { limit: Number(props.limit) }),
       ...(props?.page && { offset: Number(props.page) }),
+      attributes: { exclude: ['password'] },
     })
   }
 
