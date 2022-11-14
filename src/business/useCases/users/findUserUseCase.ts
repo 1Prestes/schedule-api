@@ -2,7 +2,7 @@ import { injectable, inject } from 'inversify'
 
 import { IUserRepository, IUserRepositoryToken } from '@business/repositories/users/iUserRepository'
 import { InputFindUserDto, OutputFindUserDto } from '@business/dto/users/userDto'
-import { userNotExist } from '@business/module/errors/users/user'
+import { userNotFound } from '@business/module/errors/users/user'
 import { IUseCase } from '../iUseCase'
 import { left, right } from '@shared/either'
 
@@ -14,7 +14,7 @@ export class FindUserUseCase implements IUseCase<InputFindUserDto, OutputFindUse
     const user = await this.userRepository.findUserById(input.id)
 
     if (!user) {
-      return left(userNotExist)
+      return left(userNotFound)
     }
 
     return right(user)

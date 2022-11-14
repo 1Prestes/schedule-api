@@ -58,4 +58,13 @@ export class UserRepository implements IUserRepository {
 
     return false
   }
+
+  async deleteUserById(id: string): Promise<boolean> {
+    const where = {
+      iduser: id,
+    }
+    const deleteResult = await this.userModel.destroy({ where })
+
+    return !!deleteResult
+  }
 }

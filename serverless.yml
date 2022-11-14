@@ -32,7 +32,7 @@ custom:
     automatic: true
     includeLayers: true
     number: 3
-  serviceName: user-schedule
+  serviceName: schedule
   contextPath: /v1/${self:custom.serviceName}
   funcDir: src/framework/functions
   baseApi: ${self:custom.contextPath}
@@ -86,6 +86,15 @@ functions:
       - http:
           path: ${self:custom.baseApi}/user
           method: put
+          cors:
+            origin: '*'
+            headers: '*'
+  deleteUser:
+    handler: ${self:custom.funcDir}/users/deleteUser.handler
+    events:
+      - http:
+          path: ${self:custom.baseApi}/user/{id}
+          method: delete
           cors:
             origin: '*'
             headers: '*'

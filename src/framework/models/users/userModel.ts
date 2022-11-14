@@ -42,7 +42,7 @@ UserModel.init(
     },
   },
   {
-    tableName: 'user',
+    tableName: 'users',
     timestamps: true,
     underscored: true,
     sequelize,

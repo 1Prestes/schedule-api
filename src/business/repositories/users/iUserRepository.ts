@@ -6,6 +6,7 @@ export const IUserRepositoryToken = Symbol.for('IUserRepository')
 export interface IUserRepository {
   create(userEntity: IUserEntity): Promise<IUserEntity>
   findUserById(id: string): Promise<IUserEntity>
+  deleteUserById(id: string): Promise<boolean>
   list({ limit, page }: InputListUsersDto): Promise<{ rows: IUserEntity[]; count: number }>
   update(props: InputUpdateUserDto): Promise<boolean>
 }

@@ -4,14 +4,20 @@ export const UserCreationFailed = {
   shortMessage: 'userCreationFailed',
 }
 
-export const userNotExist = {
+export const userNotFound = {
   code: 'USC-002',
-  message: 'User not exist',
-  shortMessage: 'userNotExist',
+  message: 'User not found',
+  shortMessage: 'userNotFound',
 }
 
 export const failureOnGetUsers = {
   code: 'USC-003',
   message: 'Failure on get users',
   shortMessage: 'failureOnGetUsers',
+}
+
+export const failedToDeleteUser = {
+  code: 'USC-004',
+  message: 'Failed to delete user',
+  shortMessage: 'failedToDeleteUser',
 }

@@ -40,3 +40,9 @@ export interface InputUpdateUserDto {
 }
 
 export type OutputUpdateUserDto = Either<IError, boolean>
+
+export interface InputDeleteUserDto {
+  id: string
+}
+
+export type OutputDeleteUserDto = Either<IError, boolean>
