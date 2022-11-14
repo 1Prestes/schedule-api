@@ -17,3 +17,15 @@ export interface InputFindUserDto {
 }
 
 export type OutputFindUserDto = Either<IError, IUserEntity>
+
+export interface InputListUsersDto {
+  limit?: Number
+  page?: Number
+}
+
+export interface IOutputListUsers {
+  rows: IUserEntity[]
+  count: number
+}
+
+export type OutputListUsersDto = Either<IError, IOutputListUsers>

@@ -71,3 +71,12 @@ functions:
           cors:
             origin: '*'
             headers: '*'
+  listUsers:
+    handler: ${self:custom.funcDir}/users/listUsers.handler
+    events:
+      - http:
+          path: ${self:custom.baseApi}/users
+          method: get
+          cors:
+            origin: '*'
+            headers: '*'
