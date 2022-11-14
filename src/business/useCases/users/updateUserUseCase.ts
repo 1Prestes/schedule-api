@@ -4,6 +4,7 @@ import { IUseCase } from '../iUseCase'
 import { UserCreationFailed } from '@business/module/errors/users/user'
 import { IUserRepository, IUserRepositoryToken } from '@business/repositories/users/iUserRepository'
 import { InputUpdateUserDto, OutputUpdateUserDto } from '@business/dto/users/userDto'
+import { HandlePassword } from '../handle/handlePassword'
 import { left, right } from '@shared/either'
 
 @injectable()
@@ -12,10 +13,17 @@ export class UpdateUserUseCase implements IUseCase<InputUpdateUserDto, OutputUpd
 
   async exec(input: InputUpdateUserDto): Promise<OutputUpdateUserDto> {
     try {
+      const handlePassword = new HandlePassword()
+      let hashedPassword
+
+      if (input.password) {
+        hashedPassword = handlePassword.hashPassword(input.password)
+      }
+
       const userResponse = await this.userRepository.update({
         id: input.id,
         name: input.name,
-        password: input.password,
+        ...(hashedPassword && { password: hashedPassword }),
         birthDate: input.birthDate,
         address: input.address,
       })
