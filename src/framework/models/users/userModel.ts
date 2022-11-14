@@ -46,5 +46,6 @@ UserModel.init(
     timestamps: true,
     underscored: true,
     sequelize,
+    freezeTableName: true,
   }
 )
