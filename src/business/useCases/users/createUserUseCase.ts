@@ -5,6 +5,7 @@ import { UserEntity } from '@domain/entities/users/userEntity'
 import { UserCreationFailed } from '@business/module/errors/users/user'
 import { IUserRepository, IUserRepositoryToken } from '@business/repositories/users/iUserRepository'
 import { InputCreateUserDto, OutputCreateUserDto } from '@business/dto/users/userDto'
+import { HandlePassword } from '../handle/handlePassword'
 import { left, right } from '@shared/either'
 
 @injectable()
@@ -12,10 +13,13 @@ export class CreateUserUseCase implements IUseCase<InputCreateUserDto, OutputCre
   public constructor(@inject(IUserRepositoryToken) private userRepository: IUserRepository) {}
 
   async exec(input: InputCreateUserDto): Promise<OutputCreateUserDto> {
+    const handlePassword = new HandlePassword()
+    const hashedPassword = handlePassword.hashPassword(input.password)
+
     const userResult = UserEntity.create({
       name: input.name,
       username: input.username,
-      password: input.password,
+      password: hashedPassword,
       birthDate: input.birthDate,
       address: input.address,
     })
