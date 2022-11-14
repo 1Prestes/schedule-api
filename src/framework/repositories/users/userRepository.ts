@@ -1,9 +1,9 @@
 import { injectable, inject } from 'inversify'
 
-import { UserModel } from '@framework/models/users/userModel'
 import { IUserEntity } from '@domain/entities/users/userEntity'
 import { IUserRepository } from '@business/repositories/users/iUserRepository'
-import { InputListUsersDto } from '@business/dto/users/userDto'
+import { InputListUsersDto, InputUpdateUserDto } from '@business/dto/users/userDto'
+import { UserModel } from '@framework/models/users/userModel'
 
 @injectable()
 export class UserRepository implements IUserRepository {
@@ -35,5 +35,27 @@ export class UserRepository implements IUserRepository {
       ...(props?.limit && { limit: Number(props.limit) }),
       ...(props?.page && { offset: Number(props.page) }),
     })
+  }
+
+  async update(props: InputUpdateUserDto): Promise<boolean> {
+    const response = await this.userModel.update(
+      {
+        name: props.name,
+        password: props.password,
+        address: props.address,
+        birth_date: props.birthDate,
+      },
+      {
+        where: {
+          iduser: props.id,
+        },
+      }
+    )
+
+    if (response[0] === 1) {
+      return true
+    }
+
+    return false
   }
 }

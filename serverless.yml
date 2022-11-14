@@ -80,3 +80,12 @@ functions:
           cors:
             origin: '*'
             headers: '*'
+  updateUser:
+    handler: ${self:custom.funcDir}/users/updateUser.handler
+    events:
+      - http:
+          path: ${self:custom.baseApi}/user
+          method: put
+          cors:
+            origin: '*'
+            headers: '*'

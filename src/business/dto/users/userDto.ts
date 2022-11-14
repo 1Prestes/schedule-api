@@ -29,3 +29,14 @@ export interface IOutputListUsers {
 }
 
 export type OutputListUsersDto = Either<IError, IOutputListUsers>
+
+export interface InputUpdateUserDto {
+  id: string
+  name?: string
+  birthDate?: Date
+  address?: string
+  password?: string
+  confirmPassword?: string
+}
+
+export type OutputUpdateUserDto = Either<IError, boolean>
