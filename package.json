@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "pipe:check": "yarn typecheck & yarn lint",
     "db:migrate": "sequelize-cli db:migrate",
-    "migration:generate": "sequelize-cli migration:generate"
+    "migration:generate": "sequelize-cli migration:generate",
+    "model:generate": "sequelize-cli model:generate"
   },
   "engines": {
     "node": ">=14"
