@@ -17,12 +17,18 @@ UserContactModel.init(
     email: {
       type: DataTypes.STRING(80),
       allowNull: true,
+      unique: true,
     },
     phone: {
       type: DataTypes.STRING(20),
       allowNull: false,
     },
-    default: {
+    main_email: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    main_phone: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,

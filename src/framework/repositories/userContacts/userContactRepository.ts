@@ -9,12 +9,12 @@ export class UserContactRepository implements IUserContactRepository {
   public constructor(@inject(UserContactModel) private userContactModel: typeof UserContactModel) {}
 
   async create(userContactEntity: IUserContactEntity): Promise<IUserContactEntity> {
-    console.log('UserContactRepository::create::userContactEntity => ', userContactEntity)
     return this.userContactModel.create({
       iduser_contact: userContactEntity.id,
       email: userContactEntity.email,
       phone: userContactEntity.phone,
-      default: userContactEntity.default,
+      main_email: userContactEntity.mainEmail,
+      main_phone: userContactEntity.mainPhone,
       user_iduser: userContactEntity.user_iduser,
     })
   }

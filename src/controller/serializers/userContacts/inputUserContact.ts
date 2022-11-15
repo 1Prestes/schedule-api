@@ -13,7 +13,11 @@ export class InputCreateUserContact extends Validatable<InputCreateUserContact> 
 
   @IsOptional()
   @IsString()
-  default?: boolean
+  mainEmail?: boolean
+
+  @IsOptional()
+  @IsString()
+  mainPhone?: boolean
 
   @IsNotEmpty()
   @IsString()

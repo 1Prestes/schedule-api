@@ -8,7 +8,8 @@ export interface IUserContactEntity {
   id?: string
   email?: string
   phone?: string
-  default?: boolean
+  mainEmail?: boolean
+  mainPhone?: boolean
   user_iduser?: string
   createdAt?: Date
 }

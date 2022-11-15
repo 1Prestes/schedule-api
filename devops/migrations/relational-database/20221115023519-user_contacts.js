@@ -12,12 +12,18 @@ module.exports = {
       email: {
         type: Sequelize.STRING(80),
         allowNull: true,
+        unique: true,
       },
       phone: {
         type: Sequelize.STRING(20),
         allowNull: true,
       },
-      default: {
+      main_email: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      main_phone: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false,
