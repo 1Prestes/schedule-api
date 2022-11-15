@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsEmail, IsString } from 'class-validator'
+import { IsOptional, IsEmail, IsString, IsBoolean } from 'class-validator'
 
 import { Validatable } from '../abstractValidatable'
 
@@ -12,14 +12,18 @@ export class InputCreateUserContact extends Validatable<InputCreateUserContact> 
   phone?: string
 
   @IsOptional()
-  @IsString()
+  @IsBoolean()
   mainEmail?: boolean
 
   @IsOptional()
-  @IsString()
+  @IsBoolean()
   mainPhone?: boolean
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  user_iduser!: string
+  iduser?: string
+
+  @IsOptional()
+  @IsString()
+  idcontact?: string
 }

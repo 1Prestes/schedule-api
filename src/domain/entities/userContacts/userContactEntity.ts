@@ -10,7 +10,8 @@ export interface IUserContactEntity {
   phone?: string
   mainEmail?: boolean
   mainPhone?: boolean
-  user_iduser?: string
+  iduser?: string
+  idcontact?: string
   createdAt?: Date
 }
 

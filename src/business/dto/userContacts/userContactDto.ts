@@ -7,7 +7,8 @@ export interface InputCreateUserContactDto {
   phone?: string
   main_email?: boolean
   main_phone?: boolean
-  user_iduser: string
+  iduser?: string
+  idcontact?: string
 }
 
 export type OutputCreateUserContactDto = Either<IError, IUserContactEntity>

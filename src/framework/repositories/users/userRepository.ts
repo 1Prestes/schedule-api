@@ -3,7 +3,7 @@ import { injectable, inject } from 'inversify'
 import { IUserEntity } from '@domain/entities/users/userEntity'
 import { IUserRepository } from '@business/repositories/users/iUserRepository'
 import { InputListUsersDto, InputUpdateUserDto } from '@business/dto/users/userDto'
-import { UserModel } from '@framework/models/users/userModel'
+import { UserModel } from '@framework/models/userModel'
 
 @injectable()
 export class UserRepository implements IUserRepository {

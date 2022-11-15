@@ -2,8 +2,20 @@ import { Model, DataTypes } from 'sequelize'
 
 import { IUserEntity } from '@domain/entities/users/userEntity'
 import { sequelize } from '@framework/utility/database'
+import { ContactModel } from './contactsModel'
+import { UserModel } from './userModel'
 
-export class UserContactModel extends Model {}
+export class UserContactModel extends Model {
+  static associate() {
+    UserContactModel.belongsTo(UserModel, {
+      foreignKey: 'idcontact',
+    })
+
+    UserContactModel.belongsTo(ContactModel, {
+      foreignKey: 'iduser',
+    })
+  }
+}
 
 export interface UserContactModel extends IUserEntity {}
 
@@ -35,10 +47,16 @@ UserContactModel.init(
     },
     user_iduser: {
       type: DataTypes.UUID,
-      allowNull: false,
       references: {
         model: 'users',
         key: 'iduser',
+      },
+    },
+    idcontact: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'contacts',
+        key: 'idcontact',
       },
     },
     createdAt: {
