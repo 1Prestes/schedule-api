@@ -2,5 +2,6 @@ const path = require('path')
 
 module.exports = {
   'config': path.resolve('devops', 'sequelize.config.js'),
-  'migrations-path': path.resolve('devops', 'migrations', 'relational-database')
+  'migrations-path': path.resolve('devops', 'migrations', 'relational-database'),
+  'models-path': path.resolve('src', 'framework', 'models')
 }
