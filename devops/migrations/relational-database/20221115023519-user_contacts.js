@@ -11,12 +11,10 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING(80),
-        allowNull: true,
         unique: true,
       },
       phone: {
         type: Sequelize.STRING(20),
-        allowNull: true,
       },
       main_email: {
         type: Sequelize.BOOLEAN,

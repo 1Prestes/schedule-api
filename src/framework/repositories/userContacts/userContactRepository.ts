@@ -8,15 +8,22 @@ import { UserContactModel } from '@framework/models/userContactModel'
 export class UserContactRepository implements IUserContactRepository {
   public constructor(@inject(UserContactModel) private userContactModel: typeof UserContactModel) {}
 
-  async create(userContactEntity: IUserContactEntity): Promise<IUserContactEntity> {
-    return this.userContactModel.create({
-      iduser_contact: userContactEntity.id,
-      idcontact: userContactEntity.idcontact,
-      email: userContactEntity.email,
-      phone: userContactEntity.phone,
-      main_email: userContactEntity.mainEmail,
-      main_phone: userContactEntity.mainPhone,
-      user_iduser: userContactEntity.iduser,
-    })
+  async create(userContact: IUserContactEntity): Promise<IUserContactEntity> {
+    const userContactResult = await this.userContactModel
+      .create({
+        iduser_contact: userContact.id,
+        idcontact: userContact.idcontact,
+        email: userContact.email,
+        phone: userContact.phone,
+        main_email: userContact.mainEmail,
+        main_phone: userContact.mainPhone,
+        user_iduser: userContact.iduser,
+      })
+      .then(response => response)
+      .catch(error => {
+        return error?.errors[0]?.type
+      })
+
+    return userContactResult
   }
 }

@@ -5,8 +5,8 @@ import { IError } from '@shared/iError'
 export interface InputCreateUserContactDto {
   email?: string
   phone?: string
-  main_email?: boolean
-  main_phone?: boolean
+  mainEmail?: boolean
+  mainPhone?: boolean
   iduser?: string
   idcontact?: string
 }

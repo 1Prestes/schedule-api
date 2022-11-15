@@ -28,12 +28,10 @@ UserContactModel.init(
     },
     email: {
       type: DataTypes.STRING(80),
-      allowNull: true,
       unique: true,
     },
     phone: {
       type: DataTypes.STRING(20),
-      allowNull: false,
     },
     main_email: {
       type: DataTypes.BOOLEAN,

@@ -18,7 +18,7 @@ const main = httpHandler(async (event: APIGatewayProxyEvent, context: Context) =
   const result = await operator.exec(input)
 
   if (result.isLeft()) {
-    return httpResponse.internalServerError()
+    return httpResponse.badRequest(result.value)
   }
 
   return result

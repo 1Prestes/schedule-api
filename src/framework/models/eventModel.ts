@@ -47,6 +47,7 @@ EventModel.init(
     },
     iduser: {
       type: DataTypes.UUID,
+      allowNull: false,
       references: {
         model: 'users',
         key: 'iduser',
