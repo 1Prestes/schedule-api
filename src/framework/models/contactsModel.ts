@@ -49,5 +49,8 @@ ContactModel.init(
   {
     sequelize,
     modelName: 'contacts',
+    timestamps: true,
+    underscored: true,
+    freezeTableName: true,
   }
 )
