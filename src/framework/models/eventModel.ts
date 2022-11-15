@@ -2,11 +2,23 @@ import { Model, DataTypes } from 'sequelize'
 
 import { IEventEntity } from '@domain/entities/events/eventEntity'
 import { sequelize } from '@framework/utility/database'
+import { UserModel } from './userModel'
+import { ContactModel } from './contactModel'
 
-export class EventsModel extends Model {}
-export interface EventsModel extends IEventEntity {}
+export class EventModel extends Model {
+  static associate() {
+    EventModel.belongsTo(UserModel, {
+      foreignKey: 'iduser',
+    })
 
-EventsModel.init(
+    EventModel.belongsToMany(ContactModel, {
+      through: 'contact_has_events',
+    })
+  }
+}
+export interface EventModel extends IEventEntity {}
+
+EventModel.init(
   {
     idevent: {
       type: DataTypes.UUID,

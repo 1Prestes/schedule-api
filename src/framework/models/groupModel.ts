@@ -2,8 +2,15 @@ import { Model, DataTypes } from 'sequelize'
 
 import { IGroupEntity } from '@domain/entities/groups/groupEntity'
 import { sequelize } from '@framework/utility/database'
+import { ContactModel } from './contactModel'
 
-export class GroupModel extends Model {}
+export class GroupModel extends Model {
+  static associate() {
+    GroupModel.belongsToMany(ContactModel, {
+      through: 'contact_has_group',
+    })
+  }
+}
 
 export interface GroupModel extends IGroupEntity {}
 

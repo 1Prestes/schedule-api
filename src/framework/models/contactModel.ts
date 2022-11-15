@@ -1,19 +1,23 @@
 import { Model, DataTypes } from 'sequelize'
 
-import { sequelize } from '@framework/utility/database'
 import { IContactEntity } from '@domain/entities/contacts/contactEntity'
+import { sequelize } from '@framework/utility/database'
 import { UserModel } from './userModel'
+import { GroupModel } from './groupModel'
+import { EventModel } from './eventModel'
 
 export class ContactModel extends Model {
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   * */
   static associate() {
-    // define association here
     ContactModel.belongsTo(UserModel, {
       foreignKey: 'iduser',
+    })
+
+    ContactModel.belongsToMany(GroupModel, {
+      through: 'contact_has_group',
+    })
+
+    ContactModel.belongsToMany(EventModel, {
+      through: 'contact_has_events',
     })
   }
 }
