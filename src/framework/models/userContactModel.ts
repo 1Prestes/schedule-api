@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize'
 
 import { IUserEntity } from '@domain/entities/users/userEntity'
 import { sequelize } from '@framework/utility/database'
-import { ContactModel } from './contactsModel'
+import { ContactModel } from './contactModel'
 import { UserModel } from './userModel'
 
 export class UserContactModel extends Model {
