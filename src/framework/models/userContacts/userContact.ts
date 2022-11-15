@@ -3,11 +3,11 @@ import { Model, DataTypes } from 'sequelize'
 import { IUserEntity } from '@domain/entities/users/userEntity'
 import { sequelize } from '@framework/utility/database'
 
-export class UserContactsModel extends Model {}
+export class UserContactModel extends Model {}
 
-export interface UserContactsModel extends IUserEntity {}
+export interface UserContactModel extends IUserEntity {}
 
-UserContactsModel.init(
+UserContactModel.init(
   {
     iduser_contact: {
       type: DataTypes.UUID,
@@ -26,10 +26,6 @@ UserContactsModel.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
-    },
-    birth_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
     },
     user_iduser: {
       type: DataTypes.UUID,
