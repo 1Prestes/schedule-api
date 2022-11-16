@@ -1,10 +1,10 @@
 import { injectable, inject } from 'inversify'
 
 import { AbstractOperator } from '../abstractOperator'
-import { InputCreateUserContact } from '@controller/serializers/userContacts/inputUserContact'
+import { CreateUserContactUseCase } from '@business/useCases/userContacts/createUserContactUseCase'
+import { InputCreateUserContact } from '@controller/serializers/userContacts/inputCreateUserContact'
 import { OutputCreateUserContact } from '@controller/serializers/userContacts/outputCreateUserContact'
 import { left, right } from '@shared/either'
-import { CreateUserContactUseCase } from '@business/useCases/userContacts/createUserContactUseCase'
 
 @injectable()
 export class CreateUserContactOperator extends AbstractOperator<InputCreateUserContact, OutputCreateUserContact> {

@@ -7,3 +7,12 @@ createUserContact:
         cors:
           origin: '*'
           headers: '*'
+updateUserContact:
+  handler: ${self:custom.funcDir}/userContacts/updateUserContact.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/user/user-contact
+        method: put
+        cors:
+          origin: '*'
+          headers: '*'

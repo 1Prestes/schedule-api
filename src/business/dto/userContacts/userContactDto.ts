@@ -2,7 +2,8 @@ import { IUserContactEntity } from '@domain/entities/userContacts/userContactEnt
 import { Either } from '@shared/either'
 import { IError } from '@shared/iError'
 
-export interface InputCreateUserContactDto {
+export interface InputUserContactDto {
+  id?: string
   email?: string
   phone?: string
   mainEmail?: boolean
@@ -11,4 +12,5 @@ export interface InputCreateUserContactDto {
   idcontact?: string
 }
 
-export type OutputCreateUserContactDto = Either<IError, IUserContactEntity>
+export type OutputUserContactDto = Either<IError, IUserContactEntity>
+export type OutputUpdateUserContactDto = Either<IError, boolean>
