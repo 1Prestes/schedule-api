@@ -18,4 +18,12 @@ export class InputListUserContacts extends Validatable<InputListUserContacts> {
   @IsNotEmpty()
   @IsBoolean()
   isOwner!: boolean
+
+  @IsOptional()
+  @IsString()
+  where?: string
+
+  @IsOptional()
+  @IsString()
+  like?: string
 }
