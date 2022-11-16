@@ -71,4 +71,13 @@ export class UserContactRepository implements IUserContactRepository {
       where,
     })
   }
+
+  async deleteUserContactById(id: string): Promise<boolean> {
+    const where = {
+      iduser_contact: id,
+    }
+    const deleteResult = await this.userContactModel.destroy({ where })
+
+    return !!deleteResult
+  }
 }

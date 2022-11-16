@@ -25,3 +25,12 @@ listUserContacts:
         cors:
           origin: '*'
           headers: '*'
+deleteUserContact:
+  handler: ${self:custom.funcDir}/userContacts/deleteUserContact.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/user/user-contact/{id}
+        method: delete
+        cors:
+          origin: '*'
+          headers: '*'

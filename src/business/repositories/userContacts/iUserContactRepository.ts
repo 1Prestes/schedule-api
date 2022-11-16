@@ -7,4 +7,5 @@ export interface IUserContactRepository {
   create(userContact: IUserContactEntity): Promise<IUserContactEntity>
   update(userContact: InputUserContactDto): Promise<boolean>
   list({ limit, page }: InputListUserContactsDto): Promise<{ rows: IUserContactEntity[]; count: number }>
+  deleteUserContactById(id: string): Promise<boolean>
 }

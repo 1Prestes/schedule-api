@@ -38,3 +38,9 @@ export interface IOutputListUserContacts {
 }
 
 export type OutputListUserContactsDto = Either<IError, IOutputListUserContacts>
+
+export interface InputDeleteUserContactDto {
+  id: string
+}
+
+export type OutputDeleteUserContactDto = Either<IError, boolean>

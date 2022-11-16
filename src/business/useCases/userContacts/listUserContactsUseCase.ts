@@ -1,7 +1,7 @@
 import { injectable, inject } from 'inversify'
 
 import { IUseCase } from '../iUseCase'
-import { failureOnGetUserContacts } from '@business/module/errors/userContacts/userContacts'
+import { FailureOnGetUserContacts } from '@business/module/errors/userContacts/userContacts'
 import {
   IUserContactRepository,
   IUserContactRepositoryToken,
@@ -20,7 +20,7 @@ export class ListUserContactsUseCase implements IUseCase<InputListUserContactsDt
       return right(userContacts)
     } catch (error) {
       console.log('userContacts::error => ', error)
-      return left(failureOnGetUserContacts)
+      return left(FailureOnGetUserContacts)
     }
   }
 }

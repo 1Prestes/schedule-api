@@ -46,8 +46,20 @@ export const UserContactUpdateFailed = {
   shortMessage: 'userContactUpdateFailed',
 }
 
-export const failureOnGetUserContacts = {
+export const FailureOnGetUserContacts = {
   code: 'UCE-009',
   message: 'Failure on get user contacts',
-  shortMessage: 'failureOnGetUserContacts',
+  shortMessage: 'FailureOnGetUserContacts',
+}
+
+export const FailedToDeleteUserContact = {
+  code: 'UCE-010',
+  message: 'Failed to delete user contact',
+  shortMessage: 'FailedToDeleteUserContact',
+}
+
+export const UserContactNotFound = {
+  code: 'UCE-011',
+  message: 'User contact not found',
+  shortMessage: 'UserContactNotFound',
 }
