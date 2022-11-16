@@ -14,3 +14,17 @@ export interface InputUserContactDto {
 
 export type OutputUserContactDto = Either<IError, IUserContactEntity>
 export type OutputUpdateUserContactDto = Either<IError, boolean>
+
+export interface InputListUserContactsDto {
+  id: string
+  limit?: Number
+  page?: Number
+  isOwner: boolean
+}
+
+export interface IOutputListUserContacts {
+  rows: IUserContactEntity[]
+  count: number
+}
+
+export type OutputListUserContactsDto = Either<IError, IOutputListUserContacts>

@@ -16,3 +16,12 @@ updateUserContact:
         cors:
           origin: '*'
           headers: '*'
+listUserContacts:
+  handler: ${self:custom.funcDir}/userContacts/listUserContacts.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/user/user-contacts
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'

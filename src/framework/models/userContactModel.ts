@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize'
 
-import { IUserEntity } from '@domain/entities/users/userEntity'
+import { IUserContactEntity } from '@domain/entities/userContacts/userContactEntity'
 import { sequelize } from '@framework/utility/database'
 import { ContactModel } from './contactModel'
 import { UserModel } from './userModel'
@@ -17,7 +17,7 @@ export class UserContactModel extends Model {
   }
 }
 
-export interface UserContactModel extends IUserEntity {}
+export interface UserContactModel extends IUserContactEntity {}
 
 UserContactModel.init(
   {

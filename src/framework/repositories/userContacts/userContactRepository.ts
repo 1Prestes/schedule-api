@@ -2,7 +2,7 @@ import { injectable, inject } from 'inversify'
 
 import { IUserContactEntity } from '@domain/entities/userContacts/userContactEntity'
 import { IUserContactRepository } from '@business/repositories/userContacts/iUserContactRepository'
-import { InputUserContactDto } from '@business/dto/userContacts/userContactDto'
+import { InputListUserContactsDto, InputUserContactDto } from '@business/dto/userContacts/userContactDto'
 import { UserContactModel } from '@framework/models/userContactModel'
 
 @injectable()
@@ -50,5 +50,16 @@ export class UserContactRepository implements IUserContactRepository {
     }
 
     return false
+  }
+
+  async list(props: InputListUserContactsDto): Promise<{
+    rows: UserContactModel[]
+    count: number
+  }> {
+    return this.userContactModel.findAndCountAll({
+      ...(props?.limit && { limit: Number(props.limit) }),
+      ...(props?.page && { offset: Number(props.page) }),
+      where: props.isOwner ? { user_iduser: props.id } : { idcontact: props.id },
+    })
   }
 }

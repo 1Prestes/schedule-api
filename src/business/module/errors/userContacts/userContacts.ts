@@ -45,3 +45,9 @@ export const UserContactUpdateFailed = {
   message: 'User contact update failed.',
   shortMessage: 'userContactUpdateFailed',
 }
+
+export const failureOnGetUserContacts = {
+  code: 'UCE-009',
+  message: 'Failure on get user contacts',
+  shortMessage: 'failureOnGetUserContacts',
+}

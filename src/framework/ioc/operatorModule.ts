@@ -7,6 +7,7 @@ import { UpdateUserOperator } from '@controller/operations/users/updateUserOpera
 import { DeleteUserOperator } from '@controller/operations/users/deleteUserOperator'
 import { CreateUserContactOperator } from '@controller/operations/userContacts/createUserContactOperator'
 import { UpdateUserContactOperator } from '@controller/operations/userContacts/updateUserContactOperator'
+import { ListUserContactsOperator } from '@controller/operations/userContacts/listUserContactsOperator'
 
 export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(CreateUserOperator).to(CreateUserOperator)
@@ -16,4 +17,5 @@ export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(DeleteUserOperator).to(DeleteUserOperator)
   bind(CreateUserContactOperator).to(CreateUserContactOperator)
   bind(UpdateUserContactOperator).to(UpdateUserContactOperator)
+  bind(ListUserContactsOperator).to(ListUserContactsOperator)
 })
