@@ -12,3 +12,16 @@ export interface InputCreateEventDto {
 }
 
 export type OutputCreateEventDto = Either<IError, IEventEntity>
+
+export interface IOutputListEvents {
+  rows: IEventEntity[]
+  count: number
+}
+
+export interface InputListEventsDto {
+  iduser: string
+  limit?: Number
+  page?: Number
+}
+
+export type OutputListEventsDto = Either<IError, IOutputListEvents>

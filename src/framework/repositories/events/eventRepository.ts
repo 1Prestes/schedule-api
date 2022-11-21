@@ -3,6 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IEventRepository } from '@business/repositories/events/iEventRepository'
 import { EventModel } from '@framework/models/eventModel'
 import { IEventEntity } from '@domain/entities/events/eventEntity'
+import { InputListEventsDto } from '@business/dto/events/eventsDto'
 
 @injectable()
 export class EventRepository implements IEventRepository {
@@ -20,5 +21,16 @@ export class EventRepository implements IEventRepository {
     })
 
     return createResponse.dataValues
+  }
+
+  async list(props: InputListEventsDto): Promise<{
+    rows: EventModel[]
+    count: number
+  }> {
+    return this.eventModel.findAndCountAll({
+      ...(props?.limit && { limit: Number(props.limit) }),
+      ...(props?.page && { offset: Number(props.page) }),
+      where: { iduser: props.iduser },
+    })
   }
 }

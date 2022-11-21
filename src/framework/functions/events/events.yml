@@ -7,3 +7,12 @@ createEvent:
         cors:
           origin: '*'
           headers: '*'
+listEvents:
+  handler: ${self:custom.funcDir}/events/listEvents.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/user/{id}/events
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'
