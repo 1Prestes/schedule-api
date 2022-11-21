@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IEventRepository } from '@business/repositories/events/iEventRepository'
 import { EventModel } from '@framework/models/eventModel'
 import { IEventEntity } from '@domain/entities/events/eventEntity'
-import { InputListEventsDto } from '@business/dto/events/eventsDto'
+import { InputDeleteEventDto, InputListEventsDto } from '@business/dto/events/eventsDto'
 
 @injectable()
 export class EventRepository implements IEventRepository {
@@ -32,5 +32,15 @@ export class EventRepository implements IEventRepository {
       ...(props?.page && { offset: Number(props.page) }),
       where: { iduser: props.iduser },
     })
+  }
+
+  async deleteEventById(props: InputDeleteEventDto): Promise<boolean> {
+    const where = {
+      idevent: props.idevent,
+      iduser: props.iduser,
+    }
+    const deleteResult = await this.eventModel.destroy({ where })
+
+    return !!deleteResult
   }
 }

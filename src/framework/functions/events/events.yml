@@ -11,8 +11,17 @@ listEvents:
   handler: ${self:custom.funcDir}/events/listEvents.handler
   events:
     - http:
-        path: ${self:custom.baseApi}/user/{id}/events
+        path: ${self:custom.baseApi}/user/{iduser}/events
         method: get
+        cors:
+          origin: '*'
+          headers: '*'
+deleteEvent:
+  handler: ${self:custom.funcDir}/events/deleteEvent.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/user/{iduser}/event/{idevent}
+        method: delete
         cors:
           origin: '*'
           headers: '*'

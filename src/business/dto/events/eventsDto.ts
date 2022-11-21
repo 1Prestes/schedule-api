@@ -25,3 +25,10 @@ export interface InputListEventsDto {
 }
 
 export type OutputListEventsDto = Either<IError, IOutputListEvents>
+
+export interface InputDeleteEventDto {
+  idevent: string
+  iduser: string
+}
+
+export type OutputDeleteEventDto = Either<IError, boolean>
