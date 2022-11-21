@@ -1,0 +1,9 @@
+createEvent:
+  handler: ${self:custom.funcDir}/events/createEvent.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/events
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'
