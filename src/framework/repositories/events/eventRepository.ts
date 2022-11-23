@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IEventRepository } from '@business/repositories/events/iEventRepository'
 import { EventModel } from '@framework/models/eventModel'
 import { IEventEntity } from '@domain/entities/events/eventEntity'
-import { InputDeleteEventDto, InputListEventsDto } from '@business/dto/events/eventsDto'
+import { InputDeleteEventDto, InputListEventsDto, InputUpdateEventDto } from '@business/dto/events/eventsDto'
 
 @injectable()
 export class EventRepository implements IEventRepository {
@@ -42,5 +42,29 @@ export class EventRepository implements IEventRepository {
     const deleteResult = await this.eventModel.destroy({ where })
 
     return !!deleteResult
+  }
+
+  async update(props: InputUpdateEventDto): Promise<boolean> {
+    const response = await this.eventModel.update(
+      {
+        title: props.title,
+        description: props.description,
+        initialDate: props.initialDate,
+        finalDate: props.finalDate,
+        place: props.place,
+      },
+      {
+        where: {
+          idevent: props.idevent,
+          iduser: props.iduser,
+        },
+      }
+    )
+
+    if (response[0] === 1) {
+      return true
+    }
+
+    return false
   }
 }

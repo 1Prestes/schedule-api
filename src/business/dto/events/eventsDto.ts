@@ -32,3 +32,15 @@ export interface InputDeleteEventDto {
 }
 
 export type OutputDeleteEventDto = Either<IError, boolean>
+
+export interface InputUpdateEventDto {
+  idevent: string
+  title?: string
+  description?: string
+  initialDate?: Date
+  finalDate?: Date
+  place?: string
+  iduser: string
+}
+
+export type OutputUpdateEventDto = Either<IError, boolean>

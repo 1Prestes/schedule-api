@@ -27,3 +27,9 @@ export const EventNotFound = {
   message: 'Event not found',
   shortMessage: 'EventNotFound',
 }
+
+export const FailedToUpdateEvent = {
+  code: 'ESC-006',
+  message: 'Failed to update event',
+  shortMessage: 'Failed to update event',
+}

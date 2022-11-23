@@ -25,3 +25,13 @@ deleteEvent:
         cors:
           origin: '*'
           headers: '*'
+
+updateEvent:
+  handler: ${self:custom.funcDir}/events/updateEvent.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/user/{iduser}/event/{idevent}
+        method: put
+        cors:
+          origin: '*'
+          headers: '*'
