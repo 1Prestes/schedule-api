@@ -1,8 +1,9 @@
 import { inject, injectable } from 'inversify'
 
-import { IContactRepository } from '@business/repositories/contacts/iContactRepository'
-import { ContactModel } from '@framework/models/contactModel'
 import { IContactEntity } from '@domain/entities/contacts/contactEntity'
+import { IContactRepository } from '@business/repositories/contacts/iContactRepository'
+import { InputListContactsDto } from '@business/dto/contacts/contactsDto'
+import { ContactModel } from '@framework/models/contactModel'
 
 @injectable()
 export class ContactRepository implements IContactRepository {
@@ -15,6 +16,17 @@ export class ContactRepository implements IContactRepository {
       name: contactEntity.name,
       address: contactEntity.address,
       birth_date: contactEntity.birthDate,
+    })
+  }
+
+  async list(props: InputListContactsDto): Promise<{
+    rows: ContactModel[]
+    count: number
+  }> {
+    return this.contactModel.findAndCountAll({
+      ...(props?.limit && { limit: Number(props.limit) }),
+      ...(props?.page && { offset: Number(props.page) }),
+      where: { iduser: props.iduser },
     })
   }
 }

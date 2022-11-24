@@ -10,3 +10,16 @@ export interface InputCreateContactDto {
 }
 
 export type OutputCreateContactDto = Either<IError, IContactEntity>
+
+export interface IOutputListContacts {
+  rows: IContactEntity[]
+  count: number
+}
+
+export interface InputListContactsDto {
+  limit?: Number
+  page?: Number
+  iduser: string
+}
+
+export type OutputListContactsDto = Either<IError, IOutputListContacts>

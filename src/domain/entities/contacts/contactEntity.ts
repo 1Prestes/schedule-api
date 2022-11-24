@@ -9,7 +9,7 @@ export interface IContactEntity {
   name: string
   birthDate: Date
   address: string
-  iduser?: string
+  iduser: string
   createdAt?: Date
 }
 

@@ -3,3 +3,9 @@ export const ContactCreationFailed = {
   message: 'Contact creation failed',
   shortMessage: 'ContactCreationFailed',
 }
+
+export const FailureOnGetContacts = {
+  code: 'CTC-002',
+  message: 'Failure on get contacts',
+  shortMessage: 'FailureOnGetContacts',
+}

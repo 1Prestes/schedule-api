@@ -43,6 +43,13 @@ ContactModel.init(
       type: DataTypes.STRING(100),
       allowNull: false,
     },
+    iduser: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'users',
+        key: 'iduser',
+      },
+    },
     createdAt: {
       type: DataTypes.DATE,
     },

@@ -7,3 +7,13 @@ createContact:
         cors:
           origin: '*'
           headers: '*'
+
+listContacts:
+  handler: ${self:custom.funcDir}/contacts/listContacts.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/contacts
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'
