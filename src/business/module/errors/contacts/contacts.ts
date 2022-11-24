@@ -21,3 +21,9 @@ export const FailureOnGetContact = {
   message: 'Failure on get contact',
   shortMessage: 'FailureOnGetContact',
 }
+
+export const ContactUpdateFailed = {
+  code: 'CTC-005',
+  message: 'Contact update failed',
+  shortMessage: 'ContactUpdateFailed',
+}

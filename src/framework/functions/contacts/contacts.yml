@@ -27,3 +27,13 @@ findContact:
         cors:
           origin: '*'
           headers: '*'
+
+updateContact:
+  handler: ${self:custom.funcDir}/contacts/updateContact.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/contact
+        method: put
+        cors:
+          origin: '*'
+          headers: '*'

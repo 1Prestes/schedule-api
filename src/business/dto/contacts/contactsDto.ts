@@ -29,3 +29,13 @@ export interface InputFindContactDto {
 }
 
 export type OutputFindContactDto = Either<IError, IContactEntity>
+
+export interface InputUpdateContactDto {
+  id: string
+  iduser: string
+  name?: string
+  birthDate?: Date
+  address?: string
+}
+
+export type OutputUpdateContactDto = Either<IError, boolean>
