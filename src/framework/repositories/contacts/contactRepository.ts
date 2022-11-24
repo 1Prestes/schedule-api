@@ -29,4 +29,10 @@ export class ContactRepository implements IContactRepository {
       where: { iduser: props.iduser },
     })
   }
+
+  async findContactById(id: string): Promise<IContactEntity> {
+    return this.contactModel.findOne({
+      where: { idcontact: id },
+    })
+  }
 }

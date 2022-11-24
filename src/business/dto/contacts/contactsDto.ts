@@ -23,3 +23,9 @@ export interface InputListContactsDto {
 }
 
 export type OutputListContactsDto = Either<IError, IOutputListContacts>
+
+export interface InputFindContactDto {
+  id: string
+}
+
+export type OutputFindContactDto = Either<IError, IContactEntity>

@@ -17,3 +17,13 @@ listContacts:
         cors:
           origin: '*'
           headers: '*'
+
+findContact:
+  handler: ${self:custom.funcDir}/contacts/findContact.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/contact/{id}
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'
