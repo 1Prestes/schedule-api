@@ -56,3 +56,4 @@ functions:
   - ${file(${self:custom.funcDir}/users/users.yml)}
   - ${file(${self:custom.funcDir}/userContacts/userContacts.yml)}
   - ${file(${self:custom.funcDir}/events/events.yml)}
+  - ${file(${self:custom.funcDir}/contacts/contacts.yml)}

@@ -43,10 +43,10 @@ ContactModel.init(
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    created_at: {
+    createdAt: {
       type: DataTypes.DATE,
     },
-    updated_at: {
+    updatedAt: {
       type: DataTypes.DATE,
     },
   },

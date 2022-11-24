@@ -1,0 +1,9 @@
+createContact:
+  handler: ${self:custom.funcDir}/contacts/createContact.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/contact
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'
