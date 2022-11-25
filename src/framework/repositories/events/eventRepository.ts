@@ -3,7 +3,12 @@ import { inject, injectable } from 'inversify'
 import { IEventRepository } from '@business/repositories/events/iEventRepository'
 import { EventModel } from '@framework/models/eventModel'
 import { IEventEntity } from '@domain/entities/events/eventEntity'
-import { InputDeleteEventDto, InputListEventsDto, InputUpdateEventDto } from '@business/dto/events/eventsDto'
+import {
+  InputDeleteEventDto,
+  InputFindEventDto,
+  InputListEventsDto,
+  InputUpdateEventDto,
+} from '@business/dto/events/eventsDto'
 
 @injectable()
 export class EventRepository implements IEventRepository {
@@ -66,5 +71,14 @@ export class EventRepository implements IEventRepository {
     }
 
     return false
+  }
+
+  async findEventById(props: InputFindEventDto): Promise<IEventEntity> {
+    return this.eventModel.findOne({
+      where: {
+        idevent: props.idevent,
+        iduser: props.iduser,
+      },
+    })
   }
 }

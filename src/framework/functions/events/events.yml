@@ -35,3 +35,13 @@ updateEvent:
         cors:
           origin: '*'
           headers: '*'
+
+findEvent:
+  handler: ${self:custom.funcDir}/events/findEvent.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/event/{idevent}/user/{iduser}
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'

@@ -44,3 +44,10 @@ export interface InputUpdateEventDto {
 }
 
 export type OutputUpdateEventDto = Either<IError, boolean>
+
+export interface InputFindEventDto {
+  idevent: string
+  iduser: string
+}
+
+export type OutputFindEventDto = Either<IError, IEventEntity>

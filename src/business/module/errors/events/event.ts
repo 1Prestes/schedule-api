@@ -33,3 +33,9 @@ export const FailedToUpdateEvent = {
   message: 'Failed to update event',
   shortMessage: 'Failed to update event',
 }
+
+export const FailureOnGetEvent = {
+  code: 'ESC-007',
+  message: 'Failure on get event',
+  shortMessage: 'FailureOnGetEvent',
+}
