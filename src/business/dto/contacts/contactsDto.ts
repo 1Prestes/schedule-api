@@ -39,3 +39,10 @@ export interface InputUpdateContactDto {
 }
 
 export type OutputUpdateContactDto = Either<IError, boolean>
+
+export interface InputDeleteContactDto {
+  idcontact: string
+  iduser: string
+}
+
+export type OutputDeleteContactDto = Either<IError, boolean>

@@ -27,3 +27,9 @@ export const ContactUpdateFailed = {
   message: 'Contact update failed',
   shortMessage: 'ContactUpdateFailed',
 }
+
+export const FailedToDeleteContact = {
+  code: 'CTC-006',
+  message: 'Failed to delete contact',
+  shortMessage: 'FailedToDeleteContact',
+}

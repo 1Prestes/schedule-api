@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify'
 
 import { IContactEntity } from '@domain/entities/contacts/contactEntity'
 import { IContactRepository } from '@business/repositories/contacts/iContactRepository'
-import { InputListContactsDto, InputUpdateContactDto } from '@business/dto/contacts/contactsDto'
+import { InputDeleteContactDto, InputListContactsDto, InputUpdateContactDto } from '@business/dto/contacts/contactsDto'
 import { ContactModel } from '@framework/models/contactModel'
 
 @injectable()
@@ -56,5 +56,15 @@ export class ContactRepository implements IContactRepository {
     }
 
     return false
+  }
+
+  async deleteContactById(props: InputDeleteContactDto): Promise<boolean> {
+    const where = {
+      idcontact: props.idcontact,
+      iduser: props.iduser,
+    }
+    const deleteResult = await this.contactModel.destroy({ where })
+
+    return !!deleteResult
   }
 }

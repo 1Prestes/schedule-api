@@ -37,3 +37,13 @@ updateContact:
         cors:
           origin: '*'
           headers: '*'
+
+deleteContact:
+  handler: ${self:custom.funcDir}/contacts/deleteContact.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/contact/{idcontact}/user/{iduser}
+        method: delete
+        cors:
+          origin: '*'
+          headers: '*'
