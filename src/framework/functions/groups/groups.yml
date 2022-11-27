@@ -27,3 +27,13 @@ updateGroup:
         cors:
           origin: '*'
           headers: '*'
+
+deleteGroup:
+  handler: ${self:custom.funcDir}/groups/deleteGroup.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/group/{idgroup}/user/{iduser}
+        method: delete
+        cors:
+          origin: '*'
+          headers: '*'

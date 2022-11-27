@@ -28,3 +28,10 @@ export interface InputUpdateGroupDto {
 }
 
 export type OutputUpdateGroupDto = Either<IError, boolean>
+
+export interface InputDeleteGroupDto {
+  idgroup: string
+  iduser: string
+}
+
+export type OutputDeleteGroupDto = Either<IError, boolean>

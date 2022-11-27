@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IGroupEntity } from '@domain/entities/groups/groupEntity'
 import { IGroupRepository } from '@business/repositories/groups/iGroupRepository'
 import { GroupModel } from '@framework/models/group'
-import { InputUpdateGroupDto, IOutputListGroups } from '@business/dto/groups/groupDto'
+import { InputDeleteGroupDto, InputUpdateGroupDto, IOutputListGroups } from '@business/dto/groups/groupDto'
 import { InputListGroups } from '@controller/serializers/groups/inputListGroups'
 
 @injectable()
@@ -49,5 +49,15 @@ export class GroupRepository implements IGroupRepository {
     }
 
     return false
+  }
+
+  async delete(props: InputDeleteGroupDto): Promise<boolean> {
+    const where = {
+      idgroup: props.idgroup,
+      iduser: props.iduser,
+    }
+    const deleteResult = await this.groupModel.destroy({ where })
+
+    return !!deleteResult
   }
 }

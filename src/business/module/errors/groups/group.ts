@@ -15,3 +15,15 @@ export const GroupListingFailed = {
   message: 'Group listing failed',
   shortMessage: 'GroupListingFailed',
 }
+
+export const GroupNotFound = {
+  code: 'HGE-004',
+  message: 'Group not found',
+  shortMessage: 'GroupNotFound',
+}
+
+export const FailedToDeleteGroup = {
+  code: 'HGE-005',
+  message: 'Failed to delete group',
+  shortMessage: 'FailedToDeleteGroup',
+}
