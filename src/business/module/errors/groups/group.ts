@@ -33,3 +33,9 @@ export const FailedToAddUserToAGroup = {
   message: 'Failed to add user to a group',
   shortMessage: 'FailedToAddUserToAGroup',
 }
+
+export const FailedToListContactsFromGroup = {
+  code: 'HGE-006',
+  message: 'Failed to list contacts from group',
+  shortMessage: 'FailedToListContactsFromGroup',
+}

@@ -52,8 +52,18 @@ removeContactFromGroup:
   handler: ${self:custom.funcDir}/groups/removeContactFromGroup.handler
   events:
     - http:
-        path: ${self:custom.baseApi}/group/ -contact
+        path: ${self:custom.baseApi}/group/remove-contact
         method: post
+        cors:
+          origin: '*'
+          headers: '*'
+
+listContactsFromGroup:
+  handler: ${self:custom.funcDir}/groups/listContactsFromGroup.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/group/{idgroup}/user/{iduser}
+        method: get
         cors:
           origin: '*'
           headers: '*'

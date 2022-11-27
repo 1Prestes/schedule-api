@@ -6,6 +6,7 @@ import { GroupModel } from '@framework/models/group'
 import {
   InputAddContactToGroupDto,
   InputDeleteGroupDto,
+  InputListContactsFromGroupDto,
   InputRemoveContactFromGroupDto,
   InputUpdateGroupDto,
   IOutputListGroups,
@@ -103,5 +104,14 @@ export class GroupRepository implements IGroupRepository {
     })
 
     return true
+  }
+
+  async listContactsFromGroup(props: InputListContactsFromGroupDto): Promise<IGroupEntity> {
+    const response = await this.groupModel.findOne({
+      where: { idgroup: props.idgroup },
+      include: ContactModel,
+    })
+
+    return response
   }
 }

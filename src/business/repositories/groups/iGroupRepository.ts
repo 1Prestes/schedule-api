@@ -2,6 +2,7 @@ import { IGroupEntity } from '@domain/entities/groups/groupEntity'
 import {
   InputAddContactToGroupDto,
   InputDeleteGroupDto,
+  InputListContactsFromGroupDto,
   InputListGroupsDto,
   InputRemoveContactFromGroupDto,
   InputUpdateGroupDto,
@@ -19,4 +20,5 @@ export interface IGroupRepository {
   delete(props: InputDeleteGroupDto): Promise<boolean>
   addContactToGroup(props: InputAddContactToGroupDto): Promise<IGroupEntity>
   removeContactFromGroup(props: InputRemoveContactFromGroupDto): Promise<boolean>
+  listContactsFromGroup(props: InputListContactsFromGroupDto): Promise<any>
 }

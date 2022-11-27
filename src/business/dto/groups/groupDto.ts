@@ -51,3 +51,10 @@ export interface InputRemoveContactFromGroupDto {
 }
 
 export type OutputRemoveContactFromGroupDto = Either<IError, boolean>
+
+export interface InputListContactsFromGroupDto {
+  idgroup: string
+  iduser: string
+}
+
+export type OutputListContactsFromGroupDto = Either<IError, IGroupEntity>

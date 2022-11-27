@@ -26,9 +26,9 @@ export class RemoveContactFromGroupUseCase
         return left(ContactNotFound)
       }
 
-      const eventResult = await this.groupRepository.findGroupById(input.idgroup)
+      const groupResult = await this.groupRepository.findGroupById(input.idgroup)
 
-      if (!eventResult) {
+      if (!groupResult) {
         return left(GroupNotFound)
       }
 
