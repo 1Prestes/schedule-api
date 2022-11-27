@@ -37,3 +37,13 @@ deleteGroup:
         cors:
           origin: '*'
           headers: '*'
+
+addContactToGroup:
+  handler: ${self:custom.funcDir}/groups/addContactToGroup.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/group/add-contact
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'

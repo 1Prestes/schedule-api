@@ -25,6 +25,7 @@ import { CreateGroupOperator } from '@controller/operations/groups/createGroupOp
 import { ListGroupsOperator } from '@controller/operations/groups/listGroupsOperator'
 import { UpdateGroupOperator } from '@controller/operations/groups/updateGroupOperator'
 import { DeleteGroupOperator } from '@controller/operations/groups/deleteGroupOperator'
+import { AddContactToGroupOperator } from '@controller/operations/groups/addContactToGroupOperator'
 
 export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(CreateUserOperator).to(CreateUserOperator)
@@ -52,4 +53,5 @@ export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(ListGroupsOperator).to(ListGroupsOperator)
   bind(UpdateGroupOperator).to(UpdateGroupOperator)
   bind(DeleteGroupOperator).to(DeleteGroupOperator)
+  bind(AddContactToGroupOperator).to(AddContactToGroupOperator)
 })

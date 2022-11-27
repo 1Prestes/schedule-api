@@ -35,3 +35,11 @@ export interface InputDeleteGroupDto {
 }
 
 export type OutputDeleteGroupDto = Either<IError, boolean>
+
+export interface InputAddContactToGroupDto {
+  idcontact: string
+  idgroup: string
+  iduser: string
+}
+
+export type OutputAddContactToGroupDto = Either<IError, IGroupEntity>

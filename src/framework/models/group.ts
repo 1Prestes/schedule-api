@@ -5,7 +5,9 @@ import { sequelize } from '@framework/utility/database'
 import { UserModel } from './user'
 import { ContactModel } from './contact'
 
-export class GroupModel extends Model {}
+export class GroupModel extends Model {
+  addContact: any
+}
 export interface GroupModel extends IGroupEntity {}
 
 GroupModel.init(
@@ -52,4 +54,5 @@ ContactModel.belongsToMany(GroupModel, {
   targetKey: 'idgroup',
 })
 
+ContactHasGroup.sync()
 GroupModel.sync()

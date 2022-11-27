@@ -27,3 +27,9 @@ export const FailedToDeleteGroup = {
   message: 'Failed to delete group',
   shortMessage: 'FailedToDeleteGroup',
 }
+
+export const FailedToAddUserToAGroup = {
+  code: 'HGE-006',
+  message: 'Failed to add user to a group',
+  shortMessage: 'FailedToAddUserToAGroup',
+}
