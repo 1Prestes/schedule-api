@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IGroupEntity } from '@domain/entities/groups/groupEntity'
 import { IGroupRepository } from '@business/repositories/groups/iGroupRepository'
 import { GroupModel } from '@framework/models/group'
-import { IOutputListGroups } from '@business/dto/groups/groupDto'
+import { InputUpdateGroupDto, IOutputListGroups } from '@business/dto/groups/groupDto'
 import { InputListGroups } from '@controller/serializers/groups/inputListGroups'
 
 @injectable()
@@ -30,5 +30,24 @@ export class GroupRepository implements IGroupRepository {
       ...(props?.page && { offset: Number(props.page) }),
       where: { iduser: props.iduser },
     })
+  }
+
+  async update(props: InputUpdateGroupDto): Promise<boolean> {
+    const response = await this.groupModel.update(
+      {
+        title: props.title,
+      },
+      {
+        where: {
+          iduser: props.iduser,
+        },
+      }
+    )
+
+    if (response[0] === 1) {
+      return true
+    }
+
+    return false
   }
 }

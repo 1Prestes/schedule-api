@@ -17,3 +17,13 @@ listGroups:
         cors:
           origin: '*'
           headers: '*'
+
+updateGroup:
+  handler: ${self:custom.funcDir}/groups/updateGroup.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/group
+        method: put
+        cors:
+          origin: '*'
+          headers: '*'

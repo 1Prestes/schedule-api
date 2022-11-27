@@ -29,19 +29,19 @@ export class CreateGroupUseCase implements IUseCase<InputCreateGroupDto, OutputC
       return left(AGroupWithThisTitleAlreadyExists)
     }
 
-    const contactResult = GroupEntity.create({
+    const groupResult = GroupEntity.create({
       title: input.title,
       iduser: input.iduser,
     })
 
-    if (contactResult.isLeft()) {
+    if (groupResult.isLeft()) {
       return left(GroupCreationFailed)
     }
 
     try {
-      const contactResponse = await this.groupRepository.create(contactResult.value.export())
+      const groupResponse = await this.groupRepository.create(groupResult.value.export())
 
-      return right(contactResponse)
+      return right(groupResponse)
     } catch (error) {
       console.log('CreateGroupUseCase::error => ', error)
 

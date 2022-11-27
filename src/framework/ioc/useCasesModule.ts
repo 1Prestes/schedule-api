@@ -23,6 +23,7 @@ import { AddContactToEventUseCase } from '@business/useCases/eventContacts/addCo
 import { RemoveContactFromEventUseCase } from '@business/useCases/eventContacts/removeContactFromEventUseCase'
 import { CreateGroupUseCase } from '@business/useCases/groups/createGroupsUseCase'
 import { ListGroupsUseCase } from '@business/useCases/groups/listGroupsUseCase'
+import { UpdateGroupUseCase } from '@business/useCases/groups/updateGroupsUseCase'
 
 export const UseCasesModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(CreateUserUseCase).to(CreateUserUseCase)
@@ -48,4 +49,5 @@ export const UseCasesModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(RemoveContactFromEventUseCase).to(RemoveContactFromEventUseCase)
   bind(CreateGroupUseCase).to(CreateGroupUseCase)
   bind(ListGroupsUseCase).to(ListGroupsUseCase)
+  bind(UpdateGroupUseCase).to(UpdateGroupUseCase)
 })
