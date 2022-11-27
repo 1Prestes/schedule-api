@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IContactEntity } from '@domain/entities/contacts/contactEntity'
 import { IContactRepository } from '@business/repositories/contacts/iContactRepository'
 import { InputDeleteContactDto, InputListContactsDto, InputUpdateContactDto } from '@business/dto/contacts/contactsDto'
-import { ContactModel } from '@framework/models/contactModel'
+import { ContactModel } from '@framework/models/contact'
 
 @injectable()
 export class ContactRepository implements IContactRepository {

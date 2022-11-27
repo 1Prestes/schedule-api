@@ -3,7 +3,7 @@ import { injectable, inject } from 'inversify'
 import { IUserEntity } from '@domain/entities/users/userEntity'
 import { IUserRepository } from '@business/repositories/users/iUserRepository'
 import { InputListUsersDto, InputUpdateUserDto } from '@business/dto/users/userDto'
-import { UserModel } from '@framework/models/userModel'
+import { UserModel } from '@framework/models/user'
 
 @injectable()
 export class UserRepository implements IUserRepository {
@@ -13,6 +13,7 @@ export class UserRepository implements IUserRepository {
     const where = {
       iduser: id,
     }
+
     return this.userModel.findOne({
       where,
       attributes: { exclude: ['password'] },
@@ -35,7 +36,7 @@ export class UserRepository implements IUserRepository {
   }
 
   async list(props: InputListUsersDto): Promise<{
-    rows: UserModel[]
+    rows: IUserEntity[]
     count: number
   }> {
     return this.userModel.findAndCountAll({

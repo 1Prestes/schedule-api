@@ -7,11 +7,11 @@ import {
   InputUserContactDto,
   WhereListUserContactsProps,
 } from '@business/dto/userContacts/userContactDto'
-import { UserContactModel } from '@framework/models/userContactModel'
+import { UserContactsModel } from '@framework/models/userContacts'
 
 @injectable()
 export class UserContactRepository implements IUserContactRepository {
-  public constructor(@inject(UserContactModel) private userContactModel: typeof UserContactModel) {}
+  public constructor(@inject(UserContactsModel) private userContactModel: typeof UserContactsModel) {}
 
   async create(userContact: IUserContactEntity): Promise<IUserContactEntity> {
     const userContactResult = await this.userContactModel
@@ -57,7 +57,7 @@ export class UserContactRepository implements IUserContactRepository {
   }
 
   async list(props: InputListUserContactsDto): Promise<{
-    rows: UserContactModel[]
+    rows: UserContactsModel[]
     count: number
   }> {
     const where = {
