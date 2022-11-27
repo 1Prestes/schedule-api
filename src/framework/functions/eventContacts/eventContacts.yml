@@ -1,0 +1,9 @@
+addContactToEvent:
+  handler: ${self:custom.funcDir}/eventContacts/addContactToEvent.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/event/{idevent}/contact/{idcontact}/user/{iduser}
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'

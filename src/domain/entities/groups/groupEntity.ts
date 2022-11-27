@@ -7,6 +7,7 @@ import { IError } from '@shared/iError'
 export interface IGroupEntity {
   id?: string
   title: string
+  iduser: string
   createdAt?: Date
 }
 

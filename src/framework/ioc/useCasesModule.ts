@@ -19,6 +19,7 @@ import { FindContactUseCase } from '@business/useCases/contacts/findContactUseCa
 import { UpdateContactUseCase } from '@business/useCases/contacts/updateContactUseCase'
 import { DeleteContactUseCase } from '@business/useCases/contacts/deleteContactUseCase'
 import { FindEventUseCase } from '@business/useCases/events/findEventUseCase'
+import { AddContactToEventUseCase } from '@business/useCases/eventContacts/addContactToEventUseCase'
 
 export const UseCasesModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(CreateUserUseCase).to(CreateUserUseCase)
@@ -40,4 +41,5 @@ export const UseCasesModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(FindContactUseCase).to(FindContactUseCase)
   bind(UpdateContactUseCase).to(UpdateContactUseCase)
   bind(DeleteContactUseCase).to(DeleteContactUseCase)
+  bind(AddContactToEventUseCase).to(AddContactToEventUseCase)
 })

@@ -1,18 +1,22 @@
 import { inject, injectable } from 'inversify'
 
-import { IEventRepository } from '@business/repositories/events/iEventRepository'
-import { EventModel } from '@framework/models/eventModel'
 import { IEventEntity } from '@domain/entities/events/eventEntity'
+import { IAddContactToEventProps, IEventRepository } from '@business/repositories/events/iEventRepository'
 import {
   InputDeleteEventDto,
   InputFindEventDto,
   InputListEventsDto,
   InputUpdateEventDto,
 } from '@business/dto/events/eventsDto'
+import { EventModel } from '@framework/models/event'
+import { ContactModel } from '@framework/models/contact'
 
 @injectable()
 export class EventRepository implements IEventRepository {
-  public constructor(@inject(EventModel) private eventModel: typeof EventModel) {}
+  public constructor(
+    @inject(EventModel) private eventModel: typeof EventModel,
+    @inject(ContactModel) private contactModel: typeof ContactModel
+  ) {}
 
   async create(eventEntity: IEventEntity): Promise<IEventEntity> {
     const createResponse = await this.eventModel.create({
@@ -80,5 +84,19 @@ export class EventRepository implements IEventRepository {
         iduser: props.iduser,
       },
     })
+  }
+
+  async addContactToEvent(props: IAddContactToEventProps): Promise<IEventEntity> {
+    const contactResponse = await this.contactModel.findByPk(props.idcontact)
+    const eventResponse = await this.eventModel.findByPk(props.idevent)
+
+    await eventResponse.addContact([contactResponse])
+
+    const result = await this.eventModel.findOne({
+      where: { idevent: props.idevent },
+      include: ContactModel,
+    })
+
+    return result
   }
 }
