@@ -1,3 +1,4 @@
+import { InputListGroupsDto, IOutputListGroups } from '@business/dto/groups/groupDto'
 import { IGroupEntity } from '@domain/entities/groups/groupEntity'
 
 export const IGroupRepositoryToken = Symbol.for('IGroupRepository')
@@ -5,4 +6,5 @@ export const IGroupRepositoryToken = Symbol.for('IGroupRepository')
 export interface IGroupRepository {
   create(contactEntity: IGroupEntity): Promise<IGroupEntity>
   findGroupByTitle(title: string): Promise<IGroupEntity>
+  list(props: InputListGroupsDto): Promise<IOutputListGroups>
 }

@@ -7,3 +7,13 @@ createGroup:
         cors:
           origin: '*'
           headers: '*'
+
+listGroups:
+  handler: ${self:custom.funcDir}/groups/listGroups.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/groups
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'

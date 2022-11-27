@@ -22,6 +22,7 @@ import { FindEventOperator } from '@controller/operations/events/findEventOperat
 import { AddContactToEventOperator } from '@controller/operations/eventContacts/addContactToEventOperator'
 import { RemoveContactFromEventOperator } from '@controller/operations/eventContacts/removeContactFromEventOperator'
 import { CreateGroupOperator } from '@controller/operations/groups/createGroupOperator'
+import { ListGroupsOperator } from '@controller/operations/groups/listGroupsOperator'
 
 export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(CreateUserOperator).to(CreateUserOperator)
@@ -46,4 +47,5 @@ export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(AddContactToEventOperator).to(AddContactToEventOperator)
   bind(RemoveContactFromEventOperator).to(RemoveContactFromEventOperator)
   bind(CreateGroupOperator).to(CreateGroupOperator)
+  bind(ListGroupsOperator).to(ListGroupsOperator)
 })

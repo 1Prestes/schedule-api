@@ -8,3 +8,16 @@ export interface InputCreateGroupDto {
 }
 
 export type OutputCreateGroupDto = Either<IError, IGroupEntity>
+
+export interface IOutputListGroups {
+  rows: IGroupEntity[]
+  count: number
+}
+
+export interface InputListGroupsDto {
+  limit?: Number
+  page?: Number
+  iduser: string
+}
+
+export type OutputListGroupsDto = Either<IError, IOutputListGroups>

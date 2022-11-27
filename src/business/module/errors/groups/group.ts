@@ -9,3 +9,9 @@ export const AGroupWithThisTitleAlreadyExists = {
   message: 'A group with this title already exists',
   shortMessage: 'AGroupWithThisTitleAlreadyExists',
 }
+
+export const GroupListingFailed = {
+  code: 'HGE-003',
+  message: 'Group listing failed',
+  shortMessage: 'GroupListingFailed',
+}
