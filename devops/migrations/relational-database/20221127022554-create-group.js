@@ -2,40 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('contacts', {
-      idcontact: {
+    await queryInterface.createTable('groups', {
+      idgroup: {
         type: Sequelize.UUID,
+        allowNull: false,
         primaryKey: true,
-        allowNull: false,
       },
-      name: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-      },
-      birth_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      address: {
-        type: Sequelize.STRING(100),
+      title: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       iduser: {
         type: Sequelize.UUID,
+        allowNull: false,
         references: {
           model: 'users',
-          key: 'iduser'
-        }
+          key: 'iduser',
+        },
       },
-      created_at: {
+      createdAt: {
+        allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
+        allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('contacts');
+    await queryInterface.dropTable('groups');
   }
 };

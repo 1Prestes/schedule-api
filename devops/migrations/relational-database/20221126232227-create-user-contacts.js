@@ -2,39 +2,42 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('events', {
-      idevent: {
+    await queryInterface.createTable('user_contacts', {
+      iduser_contact: {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
       },
-      title: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
+      email: {
+        type: Sequelize.STRING(80),
+        unique: true,
       },
-      description: {
-        type: Sequelize.TEXT('medium'),
-        allowNull: false,
+      phone: {
+        type: Sequelize.STRING(20),
       },
-      initial_date: {
-        type: Sequelize.DATE,
+      primary_email: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
       },
-      final_date: {
-        type: Sequelize.DATE,
+      primary_phone: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
-      },
-      place: {
-        type: Sequelize.STRING(150),
-        allowNull: false,
+        defaultValue: false,
       },
       iduser: {
         type: Sequelize.UUID,
-        allowNull: false,
         references: {
           model: 'users',
-          key: 'iduser'
-        }
+          key: 'iduser',
+        },
+      },
+      idcontact: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'contacts',
+          key: 'idcontact',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +50,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('events');
+    await queryInterface.dropTable('user_contacts');
   }
 };

@@ -1,27 +1,10 @@
-import { Model, DataTypes } from 'sequelize'
+import { DataTypes, Model } from 'sequelize'
 
 import { IContactEntity } from '@domain/entities/contacts/contactEntity'
 import { sequelize } from '@framework/utility/database'
-import { UserModel } from './userModel'
-import { GroupModel } from './groupModel'
-import { EventModel } from './eventModel'
+import { UserModel } from './user'
 
-export class ContactModel extends Model {
-  static associate() {
-    ContactModel.belongsTo(UserModel, {
-      foreignKey: 'iduser',
-    })
-
-    ContactModel.belongsToMany(GroupModel, {
-      through: 'contact_has_group',
-    })
-
-    ContactModel.belongsToMany(EventModel, {
-      through: 'contact_has_events',
-    })
-  }
-}
-
+export class ContactModel extends Model {}
 export interface ContactModel extends IContactEntity {}
 
 ContactModel.init(
@@ -50,18 +33,17 @@ ContactModel.init(
         key: 'iduser',
       },
     },
-    createdAt: {
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-    },
   },
   {
     sequelize,
     modelName: 'contacts',
     timestamps: true,
-    underscored: true,
     freezeTableName: true,
   }
 )
+
+ContactModel.belongsTo(UserModel, {
+  foreignKey: 'iduser',
+})
+
+ContactModel.sync()

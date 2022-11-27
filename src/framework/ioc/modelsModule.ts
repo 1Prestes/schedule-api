@@ -1,13 +1,12 @@
+import { ContactModel } from '@framework/models/contact'
+import { EventModel } from '@framework/models/event'
+import { UserModel } from '@framework/models/user'
+import { UserContactsModel } from '@framework/models/usercontacts'
 import { ContainerModule, interfaces } from 'inversify'
-
-import { UserModel } from '@framework/models/userModel'
-import { UserContactModel } from '@framework/models/userContactModel'
-import { ContactModel } from '@framework/models/contactModel'
-import { EventModel } from '@framework/models/eventModel'
 
 export const ModelsModule = new ContainerModule((bind: interfaces.Bind) => {
   bind<UserModel>(UserModel).toConstructor(UserModel)
-  bind<UserContactModel>(UserContactModel).toConstructor(UserContactModel)
+  bind<UserContactsModel>(UserContactsModel).toConstructor(UserContactsModel)
   bind<ContactModel>(ContactModel).toConstructor(ContactModel)
   bind<EventModel>(EventModel).toConstructor(EventModel)
 })

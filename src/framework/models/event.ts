@@ -1,20 +1,12 @@
-import { Model, DataTypes } from 'sequelize'
+import { DataTypes, Model } from 'sequelize'
 
 import { IEventEntity } from '@domain/entities/events/eventEntity'
 import { sequelize } from '@framework/utility/database'
-import { UserModel } from './userModel'
-import { ContactModel } from './contactModel'
+import { UserModel } from './user'
+import { ContactModel } from './contact'
 
 export class EventModel extends Model {
-  static associate() {
-    EventModel.belongsTo(UserModel, {
-      foreignKey: 'iduser',
-    })
-
-    EventModel.belongsToMany(ContactModel, {
-      through: 'contact_has_events',
-    })
-  }
+  addContact: any
 }
 export interface EventModel extends IEventEntity {}
 
@@ -30,7 +22,7 @@ EventModel.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.TEXT('medium'),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     initial_date: {
@@ -57,13 +49,30 @@ EventModel.init(
       allowNull: false,
       type: DataTypes.DATE,
     },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
   },
   {
     sequelize,
     modelName: 'events',
+    timestamps: true,
+    freezeTableName: true,
   }
 )
+
+const ContactHasEventsModel = sequelize.define('contact_has_events', {}, { timestamps: false })
+
+EventModel.belongsTo(UserModel, {
+  foreignKey: 'iduser',
+})
+
+EventModel.belongsToMany(ContactModel, {
+  through: ContactHasEventsModel,
+  targetKey: 'idcontact',
+})
+
+ContactModel.belongsToMany(EventModel, {
+  through: ContactHasEventsModel,
+  targetKey: 'idevent',
+})
+
+ContactHasEventsModel.sync()
+EventModel.sync()

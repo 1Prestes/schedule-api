@@ -1,10 +1,9 @@
-import { Model, DataTypes } from 'sequelize'
+import { DataTypes, Model } from 'sequelize'
 
-import { sequelize } from '@framework/utility/database'
 import { IUserEntity } from '@domain/entities/users/userEntity'
+import { sequelize } from '@framework/utility/database'
 
 export class UserModel extends Model {}
-
 export interface UserModel extends IUserEntity {}
 
 UserModel.init(
@@ -34,18 +33,13 @@ UserModel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-    },
   },
   {
-    tableName: 'users',
-    timestamps: true,
-    underscored: true,
     sequelize,
+    modelName: 'users',
+    timestamps: true,
     freezeTableName: true,
   }
 )
+
+UserModel.sync()
