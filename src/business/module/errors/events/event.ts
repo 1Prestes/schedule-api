@@ -39,3 +39,9 @@ export const FailureOnGetEvent = {
   message: 'Failure on get event',
   shortMessage: 'FailureOnGetEvent',
 }
+
+export const ContactRemoveFailed = {
+  code: 'ESC-008',
+  message: 'Contact remove failed',
+  shortMessage: 'ContactRemoveFailed',
+}

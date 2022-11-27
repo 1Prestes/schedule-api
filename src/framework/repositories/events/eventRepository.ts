@@ -99,4 +99,18 @@ export class EventRepository implements IEventRepository {
 
     return result
   }
+
+  async removeContactFromEvent(props: IAddContactToEventProps): Promise<boolean> {
+    const contactResponse = await this.contactModel.findByPk(props.idcontact)
+    const eventResponse = await this.eventModel.findByPk(props.idevent)
+
+    await eventResponse.removeContact(contactResponse)
+
+    await this.eventModel.findOne({
+      where: { idevent: props.idevent },
+      include: ContactModel,
+    })
+
+    return true
+  }
 }

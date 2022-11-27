@@ -21,4 +21,5 @@ export interface IEventRepository {
   update(props: InputUpdateEventDto): Promise<boolean>
   findEventById(props: InputFindEventDto): Promise<IEventEntity>
   addContactToEvent(props: IAddContactToEventProps): Promise<IEventEntity>
+  removeContactFromEvent(props: IAddContactToEventProps): Promise<boolean>
 }

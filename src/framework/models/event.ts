@@ -7,6 +7,7 @@ import { ContactModel } from './contact'
 
 export class EventModel extends Model {
   addContact: any
+  removeContact: any
 }
 export interface EventModel extends IEventEntity {}
 
