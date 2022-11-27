@@ -17,11 +17,11 @@ export class InputUpdateUserContact extends Validatable<InputUpdateUserContact> 
 
   @IsNotEmpty()
   @IsBoolean()
-  mainEmail!: boolean
+  primaryEmail!: boolean
 
   @IsNotEmpty()
   @IsBoolean()
-  mainPhone!: boolean
+  primaryPhone!: boolean
 
   @IsOptional()
   @IsString()

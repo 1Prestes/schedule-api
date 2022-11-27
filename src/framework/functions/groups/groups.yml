@@ -1,0 +1,9 @@
+createGroup:
+  handler: ${self:custom.funcDir}/groups/createGroup.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/group
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'

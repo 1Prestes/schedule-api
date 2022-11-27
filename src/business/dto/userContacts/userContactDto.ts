@@ -6,8 +6,8 @@ export interface InputUserContactDto {
   id?: string
   email?: string
   phone?: string
-  mainEmail?: boolean
-  mainPhone?: boolean
+  primaryEmail?: boolean
+  primaryPhone?: boolean
   iduser?: string
   idcontact?: string
 }
@@ -19,8 +19,8 @@ export enum WhereListUserContactsProps {
   iduserContact = 'iduser_contact',
   email = 'email',
   phone = 'phone',
-  primaryEmail = 'main_email',
-  primaryPhone = 'main_phone',
+  primaryEmail = 'primary_email',
+  primaryPhone = 'primary_phone',
 }
 
 export interface InputListUserContactsDto {

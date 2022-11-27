@@ -14,6 +14,7 @@ module.exports = {
       },
       phone: {
         type: Sequelize.STRING(20),
+        unique: true,
       },
       primary_email: {
         type: Sequelize.BOOLEAN,

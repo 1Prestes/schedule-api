@@ -20,9 +20,9 @@ export class UserContactRepository implements IUserContactRepository {
         idcontact: userContact.idcontact,
         email: userContact.email,
         phone: userContact.phone,
-        main_email: userContact.mainEmail,
-        main_phone: userContact.mainPhone,
-        user_iduser: userContact.iduser,
+        primary_email: userContact.primaryEmail,
+        primary_phone: userContact.primaryPhone,
+        iduser: userContact.iduser,
       })
       .then(response => response)
       .catch(error => {
@@ -34,13 +34,13 @@ export class UserContactRepository implements IUserContactRepository {
   }
 
   async update(userContact: InputUserContactDto): Promise<boolean> {
-    const { email, phone, mainEmail, mainPhone } = userContact
+    const { email, phone, primaryEmail, primaryPhone } = userContact
     const response = await this.userContactModel.update(
       {
         ...(email && { email: email }),
         ...(phone && { phone: phone }),
-        main_email: mainEmail,
-        main_phone: mainPhone,
+        primary_email: primaryEmail,
+        primary_phone: primaryPhone,
       },
       {
         where: {
@@ -61,10 +61,10 @@ export class UserContactRepository implements IUserContactRepository {
     count: number
   }> {
     const where = {
-      ...(props.isOwner ? { user_iduser: props.id } : { idcontact: props.id }),
+      ...(props.isOwner ? { iduser: props.id } : { idcontact: props.id }),
       ...(WhereListUserContactsProps[props.where] && { [WhereListUserContactsProps[props.where]]: props.like }),
     }
-
+    console.log('teste ', where)
     return this.userContactModel.findAndCountAll({
       ...(props?.limit && { limit: Number(props.limit) }),
       ...(props?.page && { offset: Number(props.page) }),

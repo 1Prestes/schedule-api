@@ -25,11 +25,11 @@ export class HandleUserContact {
   }
 
   public hasPrimaryContact(payload: InputUserContactDto): Either<IError, boolean> {
-    if (payload.mainEmail && !payload.email) {
+    if (payload.primaryEmail && !payload.email) {
       return left(PrimaryEmailNotInformed)
     }
 
-    if (payload.mainPhone && !payload.phone) {
+    if (payload.primaryPhone && !payload.phone) {
       return left(PrimaryPhoneNotInformed)
     }
 

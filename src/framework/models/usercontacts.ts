@@ -21,6 +21,7 @@ UserContactsModel.init(
     },
     phone: {
       type: DataTypes.STRING(20),
+      unique: true,
     },
     primary_email: {
       type: DataTypes.BOOLEAN,

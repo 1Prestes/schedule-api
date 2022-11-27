@@ -11,10 +11,13 @@ import { IEventRepository, IEventRepositoryToken } from '@business/repositories/
 import { EventRepository } from '@framework/repositories/events/eventRepository'
 import { IContactRepository, IContactRepositoryToken } from '@business/repositories/contacts/iContactRepository'
 import { ContactRepository } from '@framework/repositories/contacts/contactRepository'
+import { IGroupRepository, IGroupRepositoryToken } from '@business/repositories/groups/iGroupRepository'
+import { GroupRepository } from '@framework/repositories/groups/groupsRepository'
 
 export const RepositoryModule = new ContainerModule((bind: interfaces.Bind) => {
   bind<IUserRepository>(IUserRepositoryToken).to(UserRepository)
   bind<IUserContactRepository>(IUserContactRepositoryToken).to(UserContactRepository)
   bind<IEventRepository>(IEventRepositoryToken).to(EventRepository)
   bind<IContactRepository>(IContactRepositoryToken).to(ContactRepository)
+  bind<IGroupRepository>(IGroupRepositoryToken).to(GroupRepository)
 })

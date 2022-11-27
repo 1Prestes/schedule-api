@@ -2,7 +2,7 @@ import { ContactModel } from '@framework/models/contact'
 import { EventModel } from '@framework/models/event'
 import { GroupModel } from '@framework/models/group'
 import { UserModel } from '@framework/models/user'
-import { UserContactsModel } from '@framework/models/usercontacts'
+import { UserContactsModel } from '@framework/models/userContacts'
 import { ContainerModule, interfaces } from 'inversify'
 
 export const ModelsModule = new ContainerModule((bind: interfaces.Bind) => {
