@@ -7,6 +7,7 @@ import { ContactModel } from './contact'
 
 export class GroupModel extends Model {
   addContact: any
+  removeContact: any
 }
 export interface GroupModel extends IGroupEntity {}
 

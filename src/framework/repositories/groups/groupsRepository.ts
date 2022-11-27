@@ -6,6 +6,7 @@ import { GroupModel } from '@framework/models/group'
 import {
   InputAddContactToGroupDto,
   InputDeleteGroupDto,
+  InputRemoveContactFromGroupDto,
   InputUpdateGroupDto,
   IOutputListGroups,
 } from '@business/dto/groups/groupDto'
@@ -88,5 +89,19 @@ export class GroupRepository implements IGroupRepository {
     })
 
     return result
+  }
+
+  async removeContactFromGroup(props: InputRemoveContactFromGroupDto): Promise<boolean> {
+    const contactResponse = await this.contactModel.findByPk(props.idcontact)
+    const groupResponse = await this.groupModel.findByPk(props.idgroup)
+
+    await groupResponse.removeContact(contactResponse)
+
+    await this.groupModel.findOne({
+      where: { idgroup: props.idgroup },
+      include: ContactModel,
+    })
+
+    return true
   }
 }

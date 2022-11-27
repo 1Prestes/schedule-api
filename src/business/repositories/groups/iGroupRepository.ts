@@ -3,6 +3,7 @@ import {
   InputAddContactToGroupDto,
   InputDeleteGroupDto,
   InputListGroupsDto,
+  InputRemoveContactFromGroupDto,
   InputUpdateGroupDto,
   IOutputListGroups,
 } from '@business/dto/groups/groupDto'
@@ -17,4 +18,5 @@ export interface IGroupRepository {
   update(groupEntity: InputUpdateGroupDto): Promise<boolean>
   delete(props: InputDeleteGroupDto): Promise<boolean>
   addContactToGroup(props: InputAddContactToGroupDto): Promise<IGroupEntity>
+  removeContactFromGroup(props: InputRemoveContactFromGroupDto): Promise<boolean>
 }

@@ -47,3 +47,13 @@ addContactToGroup:
         cors:
           origin: '*'
           headers: '*'
+
+removeContactFromGroup:
+  handler: ${self:custom.funcDir}/groups/removeContactFromGroup.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/group/ -contact
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'
