@@ -29,6 +29,7 @@ import { AddContactToGroupOperator } from '@controller/operations/groups/addCont
 import { RemoveContactFromGroupOperator } from '@controller/operations/groups/removeContactFromGroupOperator'
 import { ListContactsFromGroupOperator } from '@controller/operations/groups/listContactsFromGroupOperator'
 import { ListContactsFromEventOperator } from '@controller/operations/eventContacts/listContactsFromEventOperator'
+import { SignInOperator } from '@controller/operations/authorizer/signInOperator'
 
 export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(CreateUserOperator).to(CreateUserOperator)
@@ -60,4 +61,5 @@ export const OperatorModule = new ContainerModule((bind: interfaces.Bind) => {
   bind(RemoveContactFromGroupOperator).to(RemoveContactFromGroupOperator)
   bind(ListContactsFromGroupOperator).to(ListContactsFromGroupOperator)
   bind(ListContactsFromEventOperator).to(ListContactsFromEventOperator)
+  bind(SignInOperator).to(SignInOperator)
 })

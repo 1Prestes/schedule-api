@@ -1,0 +1,9 @@
+signIn:
+  handler: ${self:custom.funcDir}/authorizer/signIn.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/sign-in
+        method: post
+        cors:
+          origin: '*'
+          headers: '*'
