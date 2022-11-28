@@ -11,7 +11,7 @@ findUser:
   handler: ${self:custom.funcDir}/users/findUser.handler
   events:
     - http:
-        path: ${self:custom.baseApi}/user/{id}
+        path: ${self:custom.baseApi}/user/{iduser}
         method: get
         cors:
           origin: '*'
@@ -38,7 +38,7 @@ deleteUser:
   handler: ${self:custom.funcDir}/users/deleteUser.handler
   events:
     - http:
-        path: ${self:custom.baseApi}/user/{id}
+        path: ${self:custom.baseApi}/user/{iduser}
         method: delete
         cors:
           origin: '*'

@@ -11,7 +11,7 @@ export class DeleteUserUseCase implements IUseCase<InputDeleteUserDto, OutputDel
   public constructor(@inject(IUserRepositoryToken) private userRepository: IUserRepository) {}
 
   async exec(input: InputDeleteUserDto): Promise<OutputDeleteUserDto> {
-    const user = await this.userRepository.deleteUserById(input.id)
+    const user = await this.userRepository.deleteUserById(input.iduser)
 
     try {
       if (!user) {

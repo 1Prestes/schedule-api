@@ -5,7 +5,7 @@ import { Validatable } from '../abstractValidatable'
 export class InputUpdateUser extends Validatable<InputUpdateUser> {
   @IsNotEmpty()
   @IsString()
-  id!: string
+  iduser!: string
 
   @IsOptional()
   @IsString()

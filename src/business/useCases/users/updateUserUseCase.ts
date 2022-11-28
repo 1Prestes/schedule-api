@@ -21,7 +21,7 @@ export class UpdateUserUseCase implements IUseCase<InputUpdateUserDto, OutputUpd
       }
 
       const userResponse = await this.userRepository.update({
-        id: input.id,
+        iduser: input.iduser,
         name: input.name,
         ...(hashedPassword && { password: hashedPassword }),
         birthDate: input.birthDate,

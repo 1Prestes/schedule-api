@@ -13,9 +13,7 @@ export class FindUserOperator extends AbstractOperator<InputFindUser, OutputFind
   }
 
   protected async run(input: InputFindUser): Promise<OutputFindUser> {
-    const result = await this.findUserUseCase.exec({
-      id: input.id,
-    })
+    const result = await this.findUserUseCase.exec(input)
 
     if (result.isLeft()) {
       return left(result.value)

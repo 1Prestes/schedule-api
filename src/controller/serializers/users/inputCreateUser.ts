@@ -21,5 +21,5 @@ export class InputCreateUser extends Validatable<InputCreateUser> {
 
   @IsNotEmpty()
   @IsString()
-  address?: string
+  address!: string
 }

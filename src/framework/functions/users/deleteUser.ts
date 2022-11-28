@@ -14,9 +14,9 @@ const main = httpHandler(async (event: APIGatewayProxyEvent, context: Context) =
   context.callbackWaitsForEmptyEventLoop = false
 
   const operator = container.get(DeleteUserOperator)
-  const id = event.pathParameters.id
+  const iduser = event.pathParameters.iduser
 
-  const input = new InputDeleteUser({ id })
+  const input = new InputDeleteUser({ iduser })
   const result = await operator.exec(input)
 
   if (result.isLeft()) {

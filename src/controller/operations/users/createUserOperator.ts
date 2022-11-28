@@ -13,13 +13,7 @@ export class CreateUserOperator extends AbstractOperator<InputCreateUser, Output
   }
 
   protected async run(input: InputCreateUser): Promise<OutputCreateUser> {
-    const result = await this.createUserUseCase.exec({
-      name: input.name,
-      username: input.username,
-      password: input.password,
-      birthDate: input.birthDate,
-      address: input.address,
-    })
+    const result = await this.createUserUseCase.exec(input)
 
     if (result.isLeft()) {
       return left(result.value)

@@ -14,9 +14,9 @@ const main = httpHandler(async (event: APIGatewayProxyEvent, context: Context) =
   context.callbackWaitsForEmptyEventLoop = false
 
   const operator = container.get(FindUserOperator)
-  const id = event.pathParameters.id
+  const iduser = event.pathParameters.iduser
 
-  const input = new InputFindUser({ id } as Object)
+  const input = new InputFindUser({ iduser } as Object)
   const result = await operator.exec(input)
 
   if (result.isLeft()) {

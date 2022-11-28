@@ -11,7 +11,7 @@ export class FindUserUseCase implements IUseCase<InputFindUserDto, OutputFindUse
   public constructor(@inject(IUserRepositoryToken) private userRepository: IUserRepository) {}
 
   async exec(input: InputFindUserDto): Promise<OutputFindUserDto> {
-    const user = await this.userRepository.findUserById(input.id)
+    const user = await this.userRepository.findUserById(input.iduser)
 
     if (!user) {
       return left(userNotFound)

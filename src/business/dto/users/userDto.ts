@@ -13,7 +13,7 @@ export interface InputCreateUserDto {
 export type OutputCreateUserDto = Either<IError, IUserEntity>
 
 export interface InputFindUserDto {
-  id: string
+  iduser: string
 }
 
 export type OutputFindUserDto = Either<IError, IUserEntity>
@@ -31,7 +31,7 @@ export interface IOutputListUsers {
 export type OutputListUsersDto = Either<IError, IOutputListUsers>
 
 export interface InputUpdateUserDto {
-  id: string
+  iduser: string
   name?: string
   birthDate?: Date
   address?: string
@@ -42,7 +42,7 @@ export interface InputUpdateUserDto {
 export type OutputUpdateUserDto = Either<IError, boolean>
 
 export interface InputDeleteUserDto {
-  id: string
+  iduser: string
 }
 
 export type OutputDeleteUserDto = Either<IError, boolean>

@@ -5,20 +5,21 @@ import { Either, right } from '@shared/either'
 import { IError } from '@shared/iError'
 
 export interface IUserEntity {
-  id?: string
+  iduser?: string
   name: string
   username: string
   birthDate: Date
-  password: string
+  password?: string
   address: string
   createdAt?: Date
+  updatedAt?: Date
 }
 
 export class UserEntity extends AbstractEntity<IUserEntity> {
   static create(props: IUserEntity): Either<IError, UserEntity> {
     const user = new UserEntity({
       ...props,
-      id: uuid(),
+      iduser: uuid(),
       createdAt: new Date(),
     })
 

@@ -9,9 +9,9 @@ import { UserModel } from '@framework/models/user'
 export class UserRepository implements IUserRepository {
   public constructor(@inject(UserModel) private userModel: typeof UserModel) {}
 
-  async findUserById(id: string): Promise<IUserEntity> {
+  async findUserById(iduser: string): Promise<IUserEntity> {
     const where = {
-      iduser: id,
+      iduser,
     }
 
     return this.userModel.findOne({
@@ -22,7 +22,7 @@ export class UserRepository implements IUserRepository {
 
   async create(userEntity: IUserEntity): Promise<IUserEntity> {
     const createResponse = await this.userModel.create({
-      iduser: userEntity.id,
+      iduser: userEntity.iduser,
       name: userEntity.name,
       username: userEntity.username,
       password: userEntity.password,
@@ -56,7 +56,7 @@ export class UserRepository implements IUserRepository {
       },
       {
         where: {
-          iduser: props.id,
+          iduser: props.iduser,
         },
       }
     )
@@ -68,12 +68,18 @@ export class UserRepository implements IUserRepository {
     return false
   }
 
-  async deleteUserById(id: string): Promise<boolean> {
+  async deleteUserById(iduser: string): Promise<boolean> {
     const where = {
-      iduser: id,
+      iduser,
     }
     const deleteResult = await this.userModel.destroy({ where })
 
     return !!deleteResult
+  }
+
+  async getUserByUsername(username: string): Promise<IUserEntity> {
+    const where = { username }
+
+    return this.userModel.findOne({ where })
   }
 }
