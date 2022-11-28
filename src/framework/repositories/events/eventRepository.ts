@@ -10,6 +10,7 @@ import {
 } from '@business/dto/events/eventsDto'
 import { EventModel } from '@framework/models/event'
 import { ContactModel } from '@framework/models/contact'
+import { InputListContactsFromEventDto } from '@business/dto/eventContacts/eventContacts'
 
 @injectable()
 export class EventRepository implements IEventRepository {
@@ -112,5 +113,14 @@ export class EventRepository implements IEventRepository {
     })
 
     return true
+  }
+
+  async listContactsFromEvent(props: InputListContactsFromEventDto): Promise<IEventEntity> {
+    const response = await this.eventModel.findOne({
+      where: { idevent: props.idevent, iduser: props.iduser },
+      include: ContactModel,
+    })
+
+    return response
   }
 }

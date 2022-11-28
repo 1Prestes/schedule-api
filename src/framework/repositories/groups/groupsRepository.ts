@@ -108,7 +108,7 @@ export class GroupRepository implements IGroupRepository {
 
   async listContactsFromGroup(props: InputListContactsFromGroupDto): Promise<IGroupEntity> {
     const response = await this.groupModel.findOne({
-      where: { idgroup: props.idgroup },
+      where: { idgroup: props.idgroup, iduser: props.iduser },
       include: ContactModel,
     })
 

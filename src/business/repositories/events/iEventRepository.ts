@@ -5,6 +5,7 @@ import {
   InputListEventsDto,
   InputUpdateEventDto,
 } from '@business/dto/events/eventsDto'
+import { InputListContactsFromEventDto } from '@business/dto/eventContacts/eventContacts'
 
 export const IEventRepositoryToken = Symbol.for('IEventRepository')
 
@@ -22,4 +23,5 @@ export interface IEventRepository {
   findEventById(props: InputFindEventDto): Promise<IEventEntity>
   addContactToEvent(props: IAddContactToEventProps): Promise<IEventEntity>
   removeContactFromEvent(props: IAddContactToEventProps): Promise<boolean>
+  listContactsFromEvent(props: InputListContactsFromEventDto): Promise<IEventEntity>
 }

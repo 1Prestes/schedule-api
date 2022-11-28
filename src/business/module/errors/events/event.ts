@@ -45,3 +45,9 @@ export const ContactRemoveFailed = {
   message: 'Contact remove failed',
   shortMessage: 'ContactRemoveFailed',
 }
+
+export const FailedToListContactsFromEvent = {
+  code: 'ESC-009',
+  message: 'Failed to list contacts from event',
+  shortMessage: 'FailedToListContactsFromEvent',
+}

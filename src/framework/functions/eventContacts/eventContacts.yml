@@ -17,3 +17,13 @@ removeContactFromEvent:
         cors:
           origin: '*'
           headers: '*'
+
+listContactsFromEvent:
+  handler: ${self:custom.funcDir}/eventContacts/listContactsFromEvent.handler
+  events:
+    - http:
+        path: ${self:custom.baseApi}/event/{idevent}/user/{iduser}/contacts
+        method: get
+        cors:
+          origin: '*'
+          headers: '*'

@@ -17,3 +17,10 @@ export interface InputRemoveContactFromEventDto {
 }
 
 export type OutputRemoveContactFromEventDto = Either<IError, boolean>
+
+export interface InputListContactsFromEventDto {
+  idevent: string
+  iduser: string
+}
+
+export type OutputListContactsFromEventDto = Either<IError, IEventEntity>
