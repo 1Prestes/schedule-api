@@ -13,6 +13,7 @@ findUser:
     - http:
         path: ${self:custom.baseApi}/user/{iduser}
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -22,6 +23,7 @@ listUsers:
     - http:
         path: ${self:custom.baseApi}/users
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -31,6 +33,7 @@ updateUser:
     - http:
         path: ${self:custom.baseApi}/user
         method: put
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -40,6 +43,7 @@ deleteUser:
     - http:
         path: ${self:custom.baseApi}/user/{iduser}
         method: delete
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'

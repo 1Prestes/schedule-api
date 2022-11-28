@@ -4,6 +4,7 @@ createEvent:
     - http:
         path: ${self:custom.baseApi}/events
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -13,6 +14,7 @@ listEvents:
     - http:
         path: ${self:custom.baseApi}/user/{iduser}/events
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -22,6 +24,7 @@ deleteEvent:
     - http:
         path: ${self:custom.baseApi}/user/{iduser}/event/{idevent}
         method: delete
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -32,6 +35,7 @@ updateEvent:
     - http:
         path: ${self:custom.baseApi}/user/{iduser}/event/{idevent}
         method: put
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -42,6 +46,7 @@ findEvent:
     - http:
         path: ${self:custom.baseApi}/event/{idevent}/user/{iduser}
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'

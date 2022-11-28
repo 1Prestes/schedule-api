@@ -4,6 +4,7 @@ createGroup:
     - http:
         path: ${self:custom.baseApi}/group
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -14,6 +15,7 @@ listGroups:
     - http:
         path: ${self:custom.baseApi}/groups
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -24,6 +26,7 @@ updateGroup:
     - http:
         path: ${self:custom.baseApi}/group
         method: put
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -34,6 +37,7 @@ deleteGroup:
     - http:
         path: ${self:custom.baseApi}/group/{idgroup}/user/{iduser}
         method: delete
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -44,6 +48,7 @@ addContactToGroup:
     - http:
         path: ${self:custom.baseApi}/group/add-contact
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -54,6 +59,7 @@ removeContactFromGroup:
     - http:
         path: ${self:custom.baseApi}/group/remove-contact
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -64,6 +70,7 @@ listContactsFromGroup:
     - http:
         path: ${self:custom.baseApi}/group/{idgroup}/user/{iduser}
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'

@@ -4,6 +4,7 @@ createContact:
     - http:
         path: ${self:custom.baseApi}/contact
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -14,6 +15,7 @@ listContacts:
     - http:
         path: ${self:custom.baseApi}/contacts
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -24,6 +26,7 @@ findContact:
     - http:
         path: ${self:custom.baseApi}/contact/{id}
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -34,6 +37,7 @@ updateContact:
     - http:
         path: ${self:custom.baseApi}/contact
         method: put
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -44,6 +48,7 @@ deleteContact:
     - http:
         path: ${self:custom.baseApi}/contact/{idcontact}/user/{iduser}
         method: delete
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'

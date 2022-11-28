@@ -4,6 +4,7 @@ addContactToEvent:
     - http:
         path: ${self:custom.baseApi}/event/add-contact
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -14,6 +15,7 @@ removeContactFromEvent:
     - http:
         path: ${self:custom.baseApi}/event/remove-contact
         method: post
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'
@@ -24,6 +26,7 @@ listContactsFromEvent:
     - http:
         path: ${self:custom.baseApi}/event/{idevent}/user/{iduser}/contacts
         method: get
+        authorizer: authorizer
         cors:
           origin: '*'
           headers: '*'

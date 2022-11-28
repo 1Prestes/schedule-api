@@ -53,10 +53,10 @@ custom:
       forceExclude:
         - aws-sdk
 functions:
+  - ${file(${self:custom.funcDir}/authorizer/authorizer.yml)}
   - ${file(${self:custom.funcDir}/users/users.yml)}
   - ${file(${self:custom.funcDir}/userContacts/userContacts.yml)}
   - ${file(${self:custom.funcDir}/events/events.yml)}
   - ${file(${self:custom.funcDir}/contacts/contacts.yml)}
   - ${file(${self:custom.funcDir}/eventContacts/eventContacts.yml)}
   - ${file(${self:custom.funcDir}/groups/groups.yml)}
-  - ${file(${self:custom.funcDir}/authorizer/authorizer.yml)}
