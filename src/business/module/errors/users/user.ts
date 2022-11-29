@@ -21,3 +21,9 @@ export const failedToDeleteUser = {
   message: 'Failed to delete user',
   shortMessage: 'failedToDeleteUser',
 }
+
+export const UsernameIsAlreadyInUse = {
+  code: 'USC-005',
+  message: 'Username is already in use',
+  shortMessage: 'UsernameIsAlreadyInUse',
+}
