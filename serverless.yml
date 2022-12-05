@@ -22,6 +22,7 @@ provider:
     DB_PORT: ${env:DB_PORT, ssm:/ifsp/infra/aurora/port}
     DB_NAME: ${env:DB_NAME, ssm:/ifsp/infra/aurora/dbname}
     DB_USER: ${env:DB_USER, ssm:/ifsp/infra/aurora/username}
+    JWT_SECRET: ${env:JWT_SECRET, ssm:/ifsp/infra/jwt/secret}
     DB_PASSWORD: ${env:DB_PASSWORD, ssm:/ifsp/infra/aurora/password}
 plugins:
   - serverless-webpack
@@ -33,7 +34,7 @@ custom:
     includeLayers: true
     number: 3
   serviceName: schedule
-  contextPath: ${ssm:/ifsp/infra/api-gateway/resource-schedule-v1}
+  contextPath: /v1/${self:custom.serviceName}
   funcDir: src/framework/functions
   baseApi: ${self:custom.contextPath}
   baseApiPrivate: internal/${self:custom.contextPath}
