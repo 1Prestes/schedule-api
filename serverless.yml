@@ -33,7 +33,7 @@ custom:
     includeLayers: true
     number: 3
   serviceName: schedule
-  contextPath: /v1/${self:custom.serviceName}
+  contextPath: ${ssm:/ifsp/infra/api-gateway/resource-schedule-v1}
   funcDir: src/framework/functions
   baseApi: ${self:custom.contextPath}
   baseApiPrivate: internal/${self:custom.contextPath}
