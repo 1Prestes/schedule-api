@@ -32,6 +32,7 @@ const generatePolicy = (sub, allow, context = {}) => {
 
 module.exports.handler = async (event, context, callback) => {
   const token = event?.authorizationToken
+  console.log('context :>> ', context)
   console.log('event :>> ', event)
 
   if (!token) {
