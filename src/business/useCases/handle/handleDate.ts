@@ -5,9 +5,9 @@ export class HandleDate {
     console.log('HandleDate::eventDateIsValid => ', initialDate, finalDate)
     console.log(
       'HandleDate::eventDateIsValid => ',
-      dayjs().isBefore(initialDate) && dayjs(initialDate).isBefore(finalDate)
+      dayjs().subtract(3, 'hours').isBefore(initialDate) && dayjs(initialDate).isBefore(finalDate)
     )
 
-    return dayjs().isBefore(initialDate) && dayjs(initialDate).isBefore(finalDate)
+    return dayjs().subtract(3, 'hours').isBefore(initialDate) && dayjs(initialDate).isBefore(finalDate)
   }
 }
