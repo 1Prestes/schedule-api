@@ -33,3 +33,9 @@ export const FailedToDeleteContact = {
   message: 'Failed to delete contact',
   shortMessage: 'FailedToDeleteContact',
 }
+
+export const ContactHasAnEventOnThisDate = {
+  code: 'CTC-007',
+  message: 'Contact has an event on this date',
+  shortMessage: 'ContactHasAnEventOnThisDate',
+}

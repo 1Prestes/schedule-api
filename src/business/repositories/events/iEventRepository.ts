@@ -15,6 +15,13 @@ export interface IAddContactToEventProps {
   iduser: string
 }
 
+export interface IContactHasEventInBetweenDate {
+  idcontact: string
+  iduser: string
+  initialDate: Date
+  finalDate: Date
+}
+
 export interface IEventRepository {
   create(eventEntity: IEventEntity): Promise<IEventEntity>
   list({ iduser, limit, page }: InputListEventsDto): Promise<{ rows: IEventEntity[]; count: number }>
@@ -24,4 +31,5 @@ export interface IEventRepository {
   addContactToEvent(props: IAddContactToEventProps): Promise<IEventEntity>
   removeContactFromEvent(props: IAddContactToEventProps): Promise<boolean>
   listContactsFromEvent(props: InputListContactsFromEventDto): Promise<IEventEntity>
+  contactHasEventInBetweenDate(props: IContactHasEventInBetweenDate): Promise<IEventEntity>
 }

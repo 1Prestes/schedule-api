@@ -5,7 +5,7 @@ import { InputAddContactToEventDto, OutputAddContactToEventDto } from '@business
 import { IEventRepository, IEventRepositoryToken } from '@business/repositories/events/iEventRepository'
 import { IContactRepository, IContactRepositoryToken } from '@business/repositories/contacts/iContactRepository'
 import { EventCreationFailed, EventNotFound } from '@business/module/errors/events/event'
-import { ContactNotFound } from '@business/module/errors/contacts/contacts'
+import { ContactHasAnEventOnThisDate, ContactNotFound } from '@business/module/errors/contacts/contacts'
 import { left, right } from '@shared/either'
 
 @injectable()
@@ -27,6 +27,17 @@ export class AddContactToEventUseCase implements IUseCase<InputAddContactToEvent
 
       if (!eventResult) {
         return left(EventNotFound)
+      }
+
+      const contactHasEvent = await this.eventRepository.contactHasEventInBetweenDate({
+        iduser: input.iduser,
+        idcontact: input.idcontact,
+        initialDate: eventResult.initialDate,
+        finalDate: eventResult.finalDate,
+      })
+
+      if (contactHasEvent) {
+        return left(ContactHasAnEventOnThisDate)
       }
 
       const addContactToEventResponse = await this.eventRepository.addContactToEvent(input)

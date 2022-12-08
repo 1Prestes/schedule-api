@@ -1,7 +1,12 @@
 import { inject, injectable } from 'inversify'
+import { Op } from 'sequelize'
 
 import { IEventEntity } from '@domain/entities/events/eventEntity'
-import { IAddContactToEventProps, IEventRepository } from '@business/repositories/events/iEventRepository'
+import {
+  IAddContactToEventProps,
+  IContactHasEventInBetweenDate,
+  IEventRepository,
+} from '@business/repositories/events/iEventRepository'
 import {
   InputDeleteEventDto,
   InputFindEventDto,
@@ -79,12 +84,41 @@ export class EventRepository implements IEventRepository {
   }
 
   async findEventById(props: InputFindEventDto): Promise<IEventEntity> {
-    return this.eventModel.findOne({
+    const response = await this.eventModel.findOne({
       where: {
         idevent: props.idevent,
         iduser: props.iduser,
       },
     })
+
+    const result = response.toJSON()
+    delete Object.assign(result, {
+      initialDate: result.initial_date,
+    }).initial_date
+
+    delete Object.assign(result, {
+      finalDate: result.final_date,
+    }).final_date
+
+    return result
+  }
+
+  async contactHasEventInBetweenDate(props: IContactHasEventInBetweenDate): Promise<IEventEntity> {
+    const result = await this.eventModel.findOne({
+      where: {
+        [Op.or]: [
+          {
+            initial_date: { [Op.between]: [props.initialDate, props.finalDate] },
+          },
+          {
+            final_date: { [Op.between]: [props.initialDate, props.finalDate] },
+          },
+        ],
+      },
+      include: { model: ContactModel, where: { idcontact: props.idcontact } },
+    })
+
+    return result
   }
 
   async addContactToEvent(props: IAddContactToEventProps): Promise<IEventEntity> {
