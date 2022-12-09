@@ -5,7 +5,7 @@ import { Validatable } from '../abstractValidatable'
 export class InputUpdateContact extends Validatable<InputUpdateContact> {
   @IsNotEmpty()
   @IsUUID()
-  id!: string
+  idcontact!: string
 
   @IsNotEmpty()
   @IsUUID()

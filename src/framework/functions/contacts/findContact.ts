@@ -14,9 +14,9 @@ const main = httpHandler(async (event: APIGatewayProxyEvent, context: Context) =
   context.callbackWaitsForEmptyEventLoop = false
 
   const operator = container.get(FindContactOperator)
-  const id = event.pathParameters.id
+  const idcontact = event.pathParameters.idcontact
 
-  const input = new InputFindContact({ id } as Object)
+  const input = new InputFindContact({ idcontact } as Object)
   const result = await operator.exec(input)
 
   if (result.isLeft()) {

@@ -11,7 +11,7 @@ export class FindContactUseCase implements IUseCase<InputFindContactDto, OutputF
   public constructor(@inject(IContactRepositoryToken) private contactRepository: IContactRepository) {}
 
   async exec(input: InputFindContactDto): Promise<OutputFindContactDto> {
-    const contactResponse = await this.contactRepository.findContactById(input.id)
+    const contactResponse = await this.contactRepository.findContactById(input.idcontact)
 
     if (!contactResponse) {
       return left(ContactNotFound)

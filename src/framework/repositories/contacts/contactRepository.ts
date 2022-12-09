@@ -11,7 +11,7 @@ export class ContactRepository implements IContactRepository {
 
   async create(contactEntity: IContactEntity): Promise<IContactEntity> {
     return this.contactModel.create({
-      idcontact: contactEntity.id,
+      idcontact: contactEntity.idcontact,
       iduser: contactEntity.iduser,
       name: contactEntity.name,
       address: contactEntity.address,
@@ -45,7 +45,7 @@ export class ContactRepository implements IContactRepository {
       },
       {
         where: {
-          idcontact: props.id,
+          idcontact: props.idcontact,
           iduser: props.iduser,
         },
       }

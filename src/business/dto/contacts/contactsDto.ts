@@ -25,13 +25,13 @@ export interface InputListContactsDto {
 export type OutputListContactsDto = Either<IError, IOutputListContacts>
 
 export interface InputFindContactDto {
-  id: string
+  idcontact: string
 }
 
 export type OutputFindContactDto = Either<IError, IContactEntity>
 
 export interface InputUpdateContactDto {
-  id: string
+  idcontact: string
   iduser: string
   name?: string
   birthDate?: Date

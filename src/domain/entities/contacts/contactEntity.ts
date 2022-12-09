@@ -5,7 +5,7 @@ import { Either, right } from '@shared/either'
 import { IError } from '@shared/iError'
 
 export interface IContactEntity {
-  id?: string
+  idcontact?: string
   name: string
   birthDate: Date
   address: string
@@ -17,7 +17,7 @@ export class ContactEntity extends AbstractEntity<IContactEntity> {
   static create(props: IContactEntity): Either<IError, ContactEntity> {
     const user = new ContactEntity({
       ...props,
-      id: uuid(),
+      idcontact: uuid(),
       createdAt: new Date(),
     })
 

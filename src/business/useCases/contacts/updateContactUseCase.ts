@@ -23,7 +23,7 @@ export class UpdateContactUseCase implements IUseCase<InputUpdateContactDto, Out
         return left(userNotFound)
       }
 
-      const contactResponse = await this.contactRepository.findContactById(input.id)
+      const contactResponse = await this.contactRepository.findContactById(input.idcontact)
 
       if (!contactResponse) {
         return left(ContactNotFound)
