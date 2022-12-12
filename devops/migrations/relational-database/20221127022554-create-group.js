@@ -11,7 +11,6 @@ module.exports = {
       title: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true,
       },
       iduser: {
         type: Sequelize.UUID,

@@ -11,7 +11,7 @@ const db = {
 const dbConnection: Options = {
   dialect: 'postgres',
   host: db.host,
-  port: parseInt(db.port, 10),
+  port: Number(db.port),
   username: db.userName,
   password: db.password,
   database: db.database,

@@ -39,3 +39,9 @@ export const FailedToListContactsFromGroup = {
   message: 'Failed to list contacts from group',
   shortMessage: 'FailedToListContactsFromGroup',
 }
+
+export const GroupUpdateFailed = {
+  code: 'HGE-007',
+  message: 'Group update failed',
+  shortMessage: 'GroupUpdateFailed',
+}

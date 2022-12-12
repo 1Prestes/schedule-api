@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify'
 
 import { IGroupEntity } from '@domain/entities/groups/groupEntity'
-import { IGroupRepository } from '@business/repositories/groups/iGroupRepository'
+import { IFindGroup, IGroupRepository } from '@business/repositories/groups/iGroupRepository'
 import { GroupModel } from '@framework/models/group'
 import {
   InputAddContactToGroupDto,
@@ -29,9 +29,12 @@ export class GroupRepository implements IGroupRepository {
     })
   }
 
-  async findGroupByTitle(title: string): Promise<IGroupEntity> {
+  async findGroup(props: IFindGroup): Promise<IGroupEntity> {
     return this.groupModel.findOne({
-      where: { title },
+      where: {
+        title: props.title,
+        iduser: props.iduser,
+      },
     })
   }
 

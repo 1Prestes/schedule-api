@@ -11,9 +11,14 @@ import {
 
 export const IGroupRepositoryToken = Symbol.for('IGroupRepository')
 
+export interface IFindGroup {
+  title: string
+  iduser: string
+}
+
 export interface IGroupRepository {
   create(groupEntity: IGroupEntity): Promise<IGroupEntity>
-  findGroupByTitle(title: string): Promise<IGroupEntity>
+  findGroup(props: IFindGroup): Promise<IGroupEntity>
   findGroupById(id: string): Promise<IGroupEntity>
   list(props: InputListGroupsDto): Promise<IOutputListGroups>
   update(groupEntity: InputUpdateGroupDto): Promise<boolean>

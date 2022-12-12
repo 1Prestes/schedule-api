@@ -23,7 +23,7 @@ export class CreateGroupUseCase implements IUseCase<InputCreateGroupDto, OutputC
       return left(userNotFound)
     }
 
-    const groupExists = await this.groupRepository.findGroupByTitle(input.title)
+    const groupExists = await this.groupRepository.findGroup(input)
 
     if (groupExists) {
       return left(AGroupWithThisTitleAlreadyExists)
