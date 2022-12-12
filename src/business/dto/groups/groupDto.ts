@@ -25,6 +25,7 @@ export type OutputListGroupsDto = Either<IError, IOutputListGroups>
 export interface InputUpdateGroupDto {
   title: string
   iduser: string
+  idgroup: string
 }
 
 export type OutputUpdateGroupDto = Either<IError, boolean>

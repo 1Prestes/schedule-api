@@ -11,4 +11,8 @@ export class InputUpdateGroup extends Validatable<InputUpdateGroup> {
   @IsNotEmpty()
   @IsUUID()
   iduser!: string
+
+  @IsNotEmpty()
+  @IsUUID()
+  idgroup!: string
 }

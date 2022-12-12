@@ -60,6 +60,7 @@ export class GroupRepository implements IGroupRepository {
       {
         where: {
           iduser: props.iduser,
+          idgroup: props.idgroup,
         },
       }
     )
